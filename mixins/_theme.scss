@@ -1,0 +1,75 @@
+@use "../functions/colors";
+@use "../settings/variables";
+@use "sass:color";
+@use "sass:meta";
+
+@mixin set-color-palette(
+    $palette-name,
+    $palette-primary,
+    $palette-secondary,
+    $palette-tertiary
+) {
+    $palette: (
+        "primary": $palette-primary,
+        "secondary": $palette-secondary,
+        "tertiary": $palette-tertiary,
+    );
+    @each $shade, $color in $palette {
+        @if (meta.type-of($color) != color) {
+            @error "Invalid color provided";
+        }
+        $color-lighter: color.scale($color, $lightness: 25%);
+        $color-darker: color.scale($color, $lightness: -25%);
+        $color-text: var(--clr-text-dark);
+        @if (colors.is-color-dark($color)) {
+            $text: var(--clr-text-light);
+        }
+
+        --clr-#{$palette-name}-#{$shade}: #{$color};
+        --clr-#{$palette-name}-#{$shade}-lighter: #{$color-lighter};
+        --clr-#{$palette-name}-#{$shade}-darker: #{$color-darker};
+        --clr-#{$palette-name}-#{$shade}-text: #{$color-text};
+    }
+
+    $color-shadow-primary: color.change(
+        $palette-primary,
+        $alpha: variables.$def-shadow-primary-alpha
+    );
+    $color-shadow-secondary: color.change(
+        $palette-primary,
+        $alpha: variables.$def-shadow-secondary-alpha
+    );
+
+    --clr-#{$palette-name}-shadow-primary: #{$color-shadow-primary};
+    --clr-#{$palette-name}-shadow-secondary: #{$color-shadow-secondary};
+}
+
+// .highlight-hover { background-color: var(--clr-highlight) }
+// .bgc-twitch { background-color: var(--clr-twitch-primary); --clr-highlight: var(--clr-twitch-primary-lighter)
+
+:root {
+    @include set-color-palette(
+        tiktok,
+        hsl(184, 52%, 61%),
+        hsl(345, 86%, 52%),
+        hsl(0, 0%, 0%)
+    );
+    @include set-color-palette(
+        amazon,
+        hsl(36, 100%, 50%),
+        hsl(0, 0%, 0%),
+        hsl(207, 100%, 65%)
+    );
+    @include set-color-palette(
+        whatsapp,
+        hsl(142, 70%, 49%),
+        hsl(173, 77%, 31%),
+        hsl(198, 87%, 57%)
+    );
+    @include set-color-palette(
+        twitter,
+        hsl(203, 89%, 53%),
+        hsl(207, 14%, 46%),
+        hsl(204, 33%, 97%)
+    );
+}

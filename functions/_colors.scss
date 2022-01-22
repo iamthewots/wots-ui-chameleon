@@ -1,0 +1,18 @@
+@use "sass:color";
+
+@function get-color-luminance($color) {
+    $channel-red: color.red($color) * 0.299;
+    $channel-green: color.green($color) * 0.587;
+    $channel-blue: color.blue($color) * 0.114;
+
+    @return $channel-red + $channel-green + $channel-blue;
+}
+
+@function is-color-dark($color) {
+    $luminance: get-color-luminance($color);
+
+    @if ($luminance > 130) {
+        @return false;
+    }
+    @return true;
+}
