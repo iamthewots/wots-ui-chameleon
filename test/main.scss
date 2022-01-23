@@ -1,0 +1,8 @@
+@use "../src/main.scss";
+@use "../src/tools.scss";
+
+@include tools.create-palette-classes(whatsapp);
+@include tools.create-palette-classes(amazon);
+@include tools.create-palette-classes(tiktok);
+
+@include tools.use-responsive-design(fluid);

@@ -1,0 +1,40 @@
+@use "../mixins/theme";
+
+:root {
+    --clr-body: hsl(200, 10%, 98%);
+    --clr-primary: hsl(0, 0%, 100%);
+    --clr-secondary: hsl(0, 0%, 92%);
+    --clr-tertiary: hsl(0, 0%, 96%);
+    --clr-text: hsl(0, 0%, 10%);
+    --clr-text-light: hsl(0, 0%, 100%);
+    --clr-text-dark: hsl(0, 0%, 10%);
+    --clr-border: hsl(0, 0%, 84%);
+    --clr-overlay: hsla(0, 0%, 10%, 0.75);
+    --clr-shadow-primary: hsl(0, 0%, 0%, 0.1);
+    --clr-shadow-secondary: hsl(0, 0%, 0%, 0.05);
+
+    @include theme.set-color-palette(
+        tiktok,
+        hsl(184, 52%, 61%),
+        hsl(345, 86%, 52%),
+        hsl(0, 0%, 0%)
+    );
+    @include theme.set-color-palette(
+        amazon,
+        hsl(36, 100%, 50%),
+        hsl(0, 0%, 95%),
+        hsl(207, 100%, 65%)
+    );
+    @include theme.set-color-palette(
+        whatsapp,
+        hsl(142, 70%, 49%),
+        hsl(173, 77%, 31%),
+        hsl(0, 0%, 95%)
+    );
+    @include theme.set-color-palette(
+        twitter,
+        hsl(203, 89%, 53%),
+        hsl(207, 14%, 46%),
+        hsl(204, 33%, 97%)
+    );
+}

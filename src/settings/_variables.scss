@@ -1,0 +1,66 @@
+@use "../functions/calc";
+
+$sizes: xs, sm, md, lg, xl;
+
+$def-border-shade: secondary-darker;
+$def-border-settings: 0.1rem solid;
+$def-breakpoints: (
+    xs: calc.get-em-from-px(300px),
+    sm: calc.get-em-from-px(600px),
+    md: calc.get-em-from-px(1200px),
+    lg: calc.get-em-from-px(2100px),
+    xl: calc.get-em-from-px(3600px),
+);
+$def-overlay-alpha: 0.75;
+$def-shade-delta: 10%;
+$def-shadow-primary-alpha: 0.1;
+$def-shadow-primary-settings: 0 0.4rem 0.6rem -0.1rem;
+$def-shadow-secondary-alpha: 0.05;
+$def-shadow-secondary-settings: 0 0.2rem 0.4rem -0.1rem;
+$def-shadow-shade: primary;
+
+:root {
+    --border-radius: 0.5rem;
+
+    --distance-xs: 10%;
+    --distance-sm: 20%;
+    --distance-md: 30%;
+    --distance-lg: 40%;
+    --distance-xl: 50%;
+
+    --duration-1: 0.2s;
+    --duration-2: 0.33s;
+    --duration-3: 0.5s;
+    --duration-4: 1s;
+    --duration-5: 2s;
+
+    --ff-input: monospace;
+    --ff-main: sans-serif;
+    --ff-title: serif;
+    --ff-jumbo: sans-serif;
+
+    --fs-xs: 1rem;
+    --fs-sm: 1.5rem;
+    --fs-md: 2.5rem;
+    --fs-lg: 3.5rem;
+    --fs-xl: 4.5rem;
+
+    --responsive-fs-xs: #{calc.get-em-from-px(10px)};
+    --responsive-fs-sm: #{calc.get-em-from-px(11px)};
+    --responsive-fs-md: #{calc.get-em-from-px(12px)};
+    --responsive-fs-lg: #{calc.get-em-from-px(13px)};
+    --responsive-fs-xl: max(#{calc.get-em-from-px(14px)}, 0.4vw);
+
+    --size-xs: 12rem;
+    --size-sm: 24rem;
+    --size-md: 48rem;
+    --size-lg: 84rem;
+    --size-xl: 144rem;
+    --size-content: 120rem;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 3rem;
+    --space-xl: 6rem;
+}

@@ -1,0 +1,129 @@
+@use "../functions/calc";
+@use "../settings/variables";
+
+@each $size in variables.$sizes {
+    $width: var(--size-#{$size});
+
+    @each $method in fit, fill {
+        .grd-#{$method}-#{$size} {
+            grid-template-columns: repeat(
+                auto-#{$method},
+                minmax(min(#{$width}, 100%), 1fr)
+            );
+            display: grid;
+        }
+
+        .flx-#{$method}-#{$size} {
+            flex-wrap: wrap;
+            display: flex;
+
+            & > * {
+                flex-basis: $width;
+                flex-shrink: 1;
+                @if ($method == fit) {
+                    flex-grow: 1;
+                } @else {
+                    flex-grow: 0;
+                }
+            }
+        }
+    }
+}
+
+@each $alignement in top, center, bottom {
+    @each $justification in left, center, right {
+        @each $display in flex, grid {
+            $alignement-value: calc.get-alignement($alignement, $display);
+            $justification-value: calc.get-alignement($justification, $display);
+            $prefix: flx;
+            @if ($display == grid) {
+                $prefix: grd;
+            }
+
+            .#{$prefix}-#{$alignement}-#{$justification} {
+                align-content: $alignement-value;
+                justify-content: $justification-value;
+                display: $display;
+            }
+        }
+    }
+}
+
+@each $target in content, items, self {
+    @each $alignement in top, center, bottom {
+        .ali-#{$target}-#{$alignement} {
+            align-#{$target}: calc.get-alignement($alignement, flex);
+            align-#{$target}: calc.get-alignement($alignement, grid);
+        }
+    }
+    @each $justification in left, center, right {
+        .ali-#{$target}-#{$justification} {
+            justify-#{$target}: calc.get-alignement($justification, flex);
+            justify-#{$target}: calc.get-alignement($justification, grid);
+        }
+    }
+}
+
+.flx {
+    &-wrap {
+        flex-wrap: wrap;
+
+        &-reverse {
+            flex-wrap: wrap-reverse;
+        }
+    }
+
+    @for $i from 1 through 5 {
+        &-grow-#{$i} {
+            flex-grow: $i;
+        }
+
+        &-shrink-#{$i} {
+            flex-shrink: $i;
+        }
+    }
+}
+
+.grd {
+    &-dense {
+        grid-auto-flow: dense;
+    }
+
+    @for $i from 1 through 12 {
+        &-#{$i} {
+            grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+            display: grid;
+        }
+
+        @for $j from 1 through 12 {
+            &-item-#{$i}x#{$j} {
+                grid-column-start: span $i;
+                grid-row-start: span $j;
+            }
+        }
+    }
+}
+
+.pos {
+    @each $position in absolute, fixed, relative {
+        &-#{$position} {
+            position: $position;
+        }
+    }
+
+    @each $coordinate in left, right, top, bottom {
+        &-#{$coordinate} {
+            #{$coordinate}: 0;
+
+            @each $size in variables.$sizes {
+                &-#{$size} {
+                    #{$coordinate}: var(--space-#{$size});
+                }
+            }
+        }
+    }
+
+    &-cover {
+        inset: 0;
+    }
+}

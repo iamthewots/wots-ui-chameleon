@@ -1,0 +1,48 @@
+@use "../functions/theme";
+@use "sass:string";
+
+@each $shade in primary, secondary, tertiary {
+    .bkg-#{$shade} {
+        background-color: var(--clr-#{$shade}) !important;
+        color: var(--clr-text) !important;
+    }
+}
+
+.box {
+    transition: all var(--duration-2) ease;
+    border: theme.get-border();
+    border-radius: var(--border-radius);
+    padding: var(--space-sm);
+    background-color: var(--clr-primary);
+    color: var(--clr-text);
+}
+
+.brd {
+    border: theme.get-border();
+
+    &-none {
+        border: none;
+    }
+
+    &-round {
+        border-radius: var(--border-radius);
+    }
+
+    &-square {
+        border-radius: 0;
+    }
+
+    @each $coordinate in left, right, top, bottom {
+        &-#{$coordinate} {
+            border-#{$coordinate}: theme.get-border();
+        }
+    }
+}
+
+.bsh {
+    box-shadow: theme.get-box-shadow();
+
+    &-hover:hover {
+        box-shadow: theme.get-box-shadow();
+    }
+}

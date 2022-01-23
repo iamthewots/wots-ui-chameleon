@@ -1,0 +1,66 @@
+@use "../functions";
+@use "../settings/variables";
+@use "sass:map";
+@use "sass:meta";
+
+@mixin set-response-to($breakpoint, $screen-query: min-width) {
+    $width: 0px;
+    @if (meta.type-of($breakpoint) == string) {
+        $width: map.get(variables.$def-breakpoints, $breakpoint);
+    }
+    @if (meta.type-of($breakpoint) == number) {
+        $width: $breakpoint;
+    }
+
+    @media screen and (#{$screen-query}: #{$width}) {
+        @content;
+    }
+}
+
+@mixin add-responsive-modifiers() {
+    @content;
+    @each $size in variables.$sizes {
+        @each $evaluation in after, before {
+            $screen-query: min-width;
+            @if ($evaluation == before) {
+                $screen-query: max-width;
+            }
+
+            &-#{$evaluation}-#{$size} {
+                @include set-response-to($size, $screen-query) {
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+@mixin use-responsive-design($method: fixed) {
+    @if ($method == fixed) {
+        html {
+            font-size: var(--responsive-fs-xs);
+
+            @include set-response-to(sm) {
+                font-size: var(--responsive-fs-sm);
+            }
+            @include set-response-to(md) {
+                font-size: var(--responsive-fs-md);
+            }
+            @include set-response-to(lg) {
+                font-size: var(--responsive-fs-lg);
+            }
+            @include set-response-to(xl) {
+                font-size: var(--responsive-fs-xl);
+            }
+        }
+    }
+    @if ($method == fluid) {
+        html {
+            font-size: max(10px, 0.666vw);
+
+            @media (min-aspect-ratio: 18/9) {
+                font-size: max(10px, 0.333vw);
+            }
+        }
+    }
+}

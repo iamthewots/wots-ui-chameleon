@@ -1,0 +1,83 @@
+@use "../settings/variables";
+@use "sass:string";
+
+@each $property in gap, margin, padding {
+    $prefix: string.slice($property, 1, 1);
+    .#{$prefix}-0 {
+        #{$property}: 0;
+    }
+    @each $size in variables.$sizes {
+        $size-value: var(--space-#{$size});
+
+        .#{$prefix}-#{$size} {
+            #{$property}: $size-value;
+        }
+
+        @if ($property != gap) {
+            @each $direction in left, right, top, bottom {
+                $suffix: string.slice($direction, 1, 1);
+
+                .#{$prefix}#{$suffix}-#{$size} {
+                    #{$property}-#{$direction}: $size-value;
+                }
+            }
+        }
+
+        @each $axis in x, y {
+            .#{$prefix}#{$axis}-#{$size} {
+                @if $axis == x {
+                    @if ($property == gap) {
+                        column-gap: $size-value;
+                    } @else {
+                        #{$property}-left: $size-value;
+                        #{$property}-right: $size-value;
+                    }
+                } @else {
+                    @if ($property == gap) {
+                        row-gap: $size-value;
+                    } @else {
+                        #{$property}-top: $size-value;
+                        #{$property}-bottom: $size-value;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.fit {
+    height: 100%;
+    width: 100%;
+
+    &-height {
+        height: 100%;
+    }
+
+    &-width {
+        width: 100%;
+    }
+
+    &-viewport {
+        width: 100vw;
+        height: max(100%, 100vh);
+
+        &-height {
+            height: max(100%, 100vh);
+        }
+
+        &-width {
+            width: 100vw;
+        }
+    }
+}
+
+.obj {
+    @each $fit in contain, cover, scale-down {
+        @each $position in left, right, top, bottom, center {
+            &-#{$fit}-#{$position} {
+                object-fit: $fit;
+                object-position: $position;
+            }
+        }
+    }
+}
