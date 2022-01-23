@@ -1,10 +1,68 @@
 @use "../mixins/theme";
+@use "sass:map";
+
+$common-colors: (
+    "amazon": (
+        primary: hsl(36, 100%, 50%),
+        secondary: hsl(0, 0%, 95%),
+        tertiary: hsl(207, 100%, 65%),
+    ),
+    "facebook": (
+        primary: hsl(214, 89%, 52%),
+        secondary: hsl(0, 0%, 100%),
+        tertiary: hsl(0, 0%, 92%),
+    ),
+    "instagram": (
+        primary: hsl(340, 75%, 54%),
+        secondary: hsl(276, 51%, 47%),
+        tertiary: hsl(20, 92%, 59%),
+    ),
+    "spotify": (
+        primary: hsl(141, 73%, 42%),
+        secondary: hsl(0, 11%, 9%),
+        tertiary: hsl(0, 0%, 100%),
+    ),
+    "tiktok": (
+        primary: hsl(184, 52%, 61%),
+        secondary: hsl(345, 86%, 52%),
+        tertiary: hsl(0, 0%, 0%),
+    ),
+    "twitch": (
+        primary: hsl(264, 100%, 64%),
+        secondary: hsl(0, 0%, 100%),
+        tertiary: hsl(0, 100%, 40%),
+    ),
+    "twitter": (
+        primary: hsl(203, 89%, 53%),
+        secondary: hsl(207, 14%, 46%),
+        tertiary: hsl(204, 33%, 97%),
+    ),
+    "whatsapp": (
+        primary: hsl(142, 70%, 49%),
+        secondary: hsl(173, 77%, 31%),
+        tertiary: hsl(0, 0%, 95%),
+    ),
+    "youtube": (
+        primary: hsl(0, 100%, 50%),
+        secondary: hsl(0, 0%, 100%),
+        tertiary: hsl(0, 0%, 16%),
+    ),
+);
 
 :root {
     --clr-body: hsl(200, 10%, 98%);
     --clr-primary: hsl(0, 0%, 100%);
-    --clr-secondary: hsl(0, 0%, 92%);
-    --clr-tertiary: hsl(0, 0%, 96%);
+    --clr-primary-lighter: hsl(0, 0%, 100%);
+    --clr-primary-darker: hsl(0, 0%, 96%);
+    --clr-primary-text: var(--clr-text-dark);
+    --clr-secondary: hsl(0, 0%, 96%);
+    --clr-secondary-lighter: hsl(0, 0%, 100%);
+    --clr-secondary-darker: hsl(0, 0%, 92%);
+    --clr-secondary-text: var(--clr-text-dark);
+    --clr-tertiary: hsl(200, 100%, 50%);
+    --clr-tertiary-lighter: hsl(200, 100%, 60%);
+    --clr-tertiary-darker: hsl(200, 100%, 40%);
+    --clr-tertiary-text: var(--clr-text-light);
     --clr-text: hsl(0, 0%, 10%);
     --clr-text-light: hsl(0, 0%, 100%);
     --clr-text-dark: hsl(0, 0%, 10%);
@@ -13,28 +71,16 @@
     --clr-shadow-primary: hsl(0, 0%, 0%, 0.1);
     --clr-shadow-secondary: hsl(0, 0%, 0%, 0.05);
 
-    @include theme.set-color-palette(
-        tiktok,
-        hsl(184, 52%, 61%),
-        hsl(345, 86%, 52%),
-        hsl(0, 0%, 0%)
-    );
-    @include theme.set-color-palette(
-        amazon,
-        hsl(36, 100%, 50%),
-        hsl(0, 0%, 95%),
-        hsl(207, 100%, 65%)
-    );
-    @include theme.set-color-palette(
-        whatsapp,
-        hsl(142, 70%, 49%),
-        hsl(173, 77%, 31%),
-        hsl(0, 0%, 95%)
-    );
-    @include theme.set-color-palette(
-        twitter,
-        hsl(203, 89%, 53%),
-        hsl(207, 14%, 46%),
-        hsl(204, 33%, 97%)
-    );
+    @each $palette, $palette-map in $common-colors {
+        $palette-primary: map.get($palette-map, primary);
+        $palette-secondary: map.get($palette-map, secondary);
+        $palette-tertiary: map.get($palette-map, tertiary);
+
+        @include theme.set-color-palette(
+            $palette,
+            $palette-primary,
+            $palette-secondary,
+            $palette-tertiary
+        );
+    }
 }

@@ -41,9 +41,9 @@ $def-shadow-shade: primary;
 
     --fs-xs: 1rem;
     --fs-sm: 1.5rem;
-    --fs-md: 2.5rem;
-    --fs-lg: 3.5rem;
-    --fs-xl: 4.5rem;
+    --fs-md: 2rem;
+    --fs-lg: 4rem;
+    --fs-xl: 6rem;
 
     --responsive-fs-xs: #{calc.get-em-from-px(10px)};
     --responsive-fs-sm: #{calc.get-em-from-px(11px)};

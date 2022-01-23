@@ -4,7 +4,11 @@
 @each $shade in primary, secondary, tertiary {
     .bkg-#{$shade} {
         background-color: var(--clr-#{$shade}) !important;
-        color: var(--clr-text) !important;
+        color: var(--clr-#{$shade}-text) !important;
+
+        &.hlg-hover:hover {
+            background-color: var(--clr-#{$shade}-lighter) !important;
+        }
     }
 }
 

@@ -1,4 +1,4 @@
 body {
-    padding: 4em;
-    font-family: "Cascadia Code", monospace;
+    --ff-main: "Cascadia Code", monospace;
+    --ff-title: "Cascadia Code", monospace;
 }

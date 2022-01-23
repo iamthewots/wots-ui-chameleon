@@ -1,0 +1,58 @@
+@use "../settings/variables";
+
+.ff {
+    @each $family in banner, input, main, title {
+        &-#{$family} {
+            font-family: var(--ff-#{$family});
+        }
+    }
+}
+
+.fs {
+    @each $size in variables.$sizes {
+        &-#{$size} {
+            font-size: var(--fs-#{$size});
+        }
+    }
+}
+
+.fw {
+    @each $weight in 100, 400, 700, 900, lighter, normal, bold, bolder {
+        &-#{$weight} {
+            font-weight: $weight;
+        }
+    }
+}
+
+.typ {
+    &-article {
+        font-family: var(--ff-title);
+        font-size: var(--fs-sm);
+        font-weight: normal;
+        line-height: 1.5;
+        text-align: justify;
+    }
+
+    &-banner {
+        font-family: var(--ff-title);
+        font-size: var(--fs-xl);
+    }
+
+    &-normal {
+        font-family: var(--ff-main);
+        font-size: var(--fs-sm);
+        font-weight: normal;
+    }
+
+    &-subtitle {
+        font-family: var(--ff-title);
+        font-size: var(--fs-md);
+        font-weight: bold;
+    }
+
+    &-title {
+        font-family: var(--ff-title);
+        font-size: var(--fs-lg);
+        font-weight: bold;
+    }
+}

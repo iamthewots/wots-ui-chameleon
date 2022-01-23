@@ -55,6 +55,10 @@
         .bkg-#{$palette-name}-#{$shade} {
             background-color: var(--clr-#{$palette-name}-#{$shade});
             color: var(--clr-#{$palette-name}-#{$shade}-text);
+
+            &.hlg-hover:hover {
+                background-color: var(--clr-#{$palette-name}-#{$shade}-lighter);
+            }
         }
 
         .brd-#{$palette-name}-#{$shade} {
@@ -63,7 +67,7 @@
 
         .bsh-#{$palette-name}-#{$shade} {
             box-shadow: theme.get-box-shadow($palette-name);
-            
+
             &-hover:hover {
                 box-shadow: theme.get-box-shadow($palette-name);
             }
@@ -91,7 +95,15 @@
 
         @each $shade in primary, secondary, tertiary {
             .bkg-#{$shade} {
-                --clr-text: var(--clr-#{$palette-name}-#{$shade}-text);
+                --clr-#{$shade}-text: var(
+                    --clr-#{$palette-name}-#{$shade}-text
+                );
+
+                &.hlg-hover:hover {
+                    --clr-#{$shade}-lighter: var(
+                        --clr-#{$palette-name}-#{$shade}-lighter
+                    );
+                }
             }
 
             .grd-#{$shade} {

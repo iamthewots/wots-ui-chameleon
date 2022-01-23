@@ -81,3 +81,21 @@
         }
     }
 }
+
+.siz {
+    @each $size in variables.$sizes {
+        $size-value: var(--size-#{$size});
+
+        @each $axis in x, y {
+            &-#{$axis}-#{$size} {
+                @if ($axis == x) {
+                    width: $size-value;
+                    max-width: 100%;
+                } @else {
+                    height: $size-value;
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+}
