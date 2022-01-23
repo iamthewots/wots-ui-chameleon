@@ -50,68 +50,47 @@
     --clr-#{$palette-name}-shadow-secondary: #{$color-shadow-secondary};
 }
 
-@mixin create-palette-classes($palette-name) {
+@mixin create-palette-classes($palette) {
     @each $shade in primary, secondary, tertiary {
-        .bkg-#{$palette-name}-#{$shade} {
-            background-color: var(--clr-#{$palette-name}-#{$shade});
-            color: var(--clr-#{$palette-name}-#{$shade}-text);
+        .bkg-#{$palette}-#{$shade} {
+            background-color: var(--clr-#{$palette}-#{$shade});
+            color: var(--clr-#{$palette}-#{$shade}-text);
 
             &.hlg-hover:hover {
-                background-color: var(--clr-#{$palette-name}-#{$shade}-lighter);
+                background-color: var(--clr-#{$palette}-#{$shade}-lighter);
             }
         }
 
-        .brd-#{$palette-name}-#{$shade} {
-            border-color: var(--clr-#{$palette-name}-#{$shade}-darker);
+        .brd-#{$palette}-#{$shade} {
+            border-color: var(--clr-#{$palette}-#{$shade}-darker);
         }
 
-        .bsh-#{$palette-name}-#{$shade} {
-            box-shadow: theme.get-box-shadow($palette-name);
+        .bsh-#{$palette}-#{$shade} {
+            box-shadow: theme.get-box-shadow($palette);
 
             &-hover:hover {
-                box-shadow: theme.get-box-shadow($palette-name);
+                box-shadow: theme.get-box-shadow($palette);
             }
         }
 
-        .clr-#{$palette-name}-#{$shade} {
-            color: var(--clr-#{$palette-name}-#{$shade});
+        .clr-#{$palette}-#{$shade} {
+            color: var(--clr-#{$palette}-#{$shade});
         }
 
-        .grd-#{$palette-name}-#{$shade} {
-            background-image: theme.get-linear-gradient(
-                #{$palette-name}-#{$shade}
-            );
-            color: var(--clr-#{$palette-name}-#{$shade}-text);
+        .grd-#{$palette}-#{$shade} {
+            background-image: theme.get-linear-gradient(#{$palette}-#{$shade});
+            color: var(--clr-#{$palette}-#{$shade}-text);
         }
     }
 
-    .pal-#{$palette-name} {
-        --clr-primary: var(--clr-#{$palette-name}-primary);
-        --clr-secondary: var(--clr-#{$palette-name}-secondary);
-        --clr-tertiary: var(--clr-#{$palette-name}-tertiary);
-        --clr-border: var(
-            --clr-#{$palette-name}-#{variables.$def-border-shade}
-        );
+    .pal-#{$palette} {
+        --clr-border: var(--clr-#{$palette}-#{variables.$def-border-shade});
 
         @each $shade in primary, secondary, tertiary {
-            .bkg-#{$shade} {
-                --clr-#{$shade}-text: var(
-                    --clr-#{$palette-name}-#{$shade}-text
-                );
-
-                &.hlg-hover:hover {
-                    --clr-#{$shade}-lighter: var(
-                        --clr-#{$palette-name}-#{$shade}-lighter
-                    );
-                }
-            }
-
-            .grd-#{$shade} {
-                background-image: theme.get-linear-gradient(
-                    #{$palette-name}-#{$shade}
-                );
-                color: var(--clr-#{$palette-name}-#{$shade}-text);
-            }
+            --clr-#{$shade}: var(--clr-#{$palette}-#{$shade});
+            --clr-#{$shade}-lighter: var(--clr-#{$palette}-#{$shade}-lighter);
+            --clr-#{$shade}-darker: var(--clr-#{$palette}-#{$shade}-darker);
+            --clr-#{$shade}-text: var(--clr-#{$palette}-#{$shade}-text);
         }
     }
 }

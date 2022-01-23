@@ -1,4 +1,5 @@
 @use "../functions/theme";
+@use "../settings/variables";
 @use "sass:string";
 
 @each $shade in primary, secondary, tertiary {
@@ -13,7 +14,7 @@
 }
 
 .box {
-    transition: all var(--duration-2) ease;
+    transition: all var(--duration-#{variables.$def-animation-duration}) ease;
     border: theme.get-border();
     border-radius: var(--border-radius);
     padding: var(--space-sm);
@@ -48,5 +49,14 @@
 
     &-hover:hover {
         box-shadow: theme.get-box-shadow();
+    }
+}
+
+.grd {
+    @each $shade in primary, secondary, tertiary {
+        &-#{$shade} {
+            background-image: theme.get-linear-gradient($shade);
+            color: var(--clr-#{$shade}-text);
+        }
     }
 }

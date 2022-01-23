@@ -8,4 +8,4 @@
 @include tools.create-palette-classes(twitter);
 @include tools.create-palette-classes(whatsapp);
 
-@include tools.use-responsive-design(fluid);
+@include tools.use-responsive-design(fixed);

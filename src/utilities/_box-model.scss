@@ -1,4 +1,5 @@
 @use "../settings/variables";
+@use "sass:math";
 @use "sass:string";
 
 @each $property in gap, margin, padding {
@@ -39,6 +40,25 @@
                         #{$property}-top: $size-value;
                         #{$property}-bottom: $size-value;
                     }
+                }
+            }
+        }
+    }
+}
+
+.asr {
+    @each $id, $aspect-ratio in variables.$def-aspect-ratios {
+        &-#{$id} {
+            @supports (aspect-ratio: #{$aspect-ratio}) {
+                aspect-ratio: $aspect-ratio;
+            }
+            @supports not(aspect-ratio: #{$aspect-ratio}) {
+                position: relative;
+                padding-top: math.div(100, $aspect-ratio) * 1%;
+
+                & > * {
+                    position: absolute;
+                    inset: 0;
                 }
             }
         }
@@ -96,6 +116,13 @@
                     max-height: 100%;
                 }
             }
+        }
+    }
+
+    @each $char-count in 45, 60, 75, 90 {
+        &-#{$char-count}ch {
+            width: $char-count * 1ch;
+            max-width: 100%;
         }
     }
 }

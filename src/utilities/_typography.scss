@@ -24,6 +24,20 @@
     }
 }
 
+.txt {
+    @each $alignement in left, center, right, justify {
+        &-#{$alignement} {
+            text-align: $alignement;
+        }
+    }
+
+    @each $transformation in capitalize, full-width, lowercase, uppercase {
+        &-#{$transformation} {
+            text-transform: $transformation;
+        }
+    }
+}
+
 .typ {
     &-article {
         font-family: var(--ff-title);

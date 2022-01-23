@@ -2,6 +2,15 @@
 
 $sizes: xs, sm, md, lg, xl;
 
+$def-animation-duration: 2;
+$def-aspect-ratios: (
+    "1x1": 1,
+    "3x2": 1.5,
+    "4x3": 1.333333333,
+    "16x9": 1.777777778,
+    "18x9": 2,
+    "21x9": 2.333333333
+);
 $def-border-shade: secondary-darker;
 $def-border-settings: 0.1rem solid;
 $def-breakpoints: (
@@ -50,6 +59,7 @@ $def-shadow-shade: primary;
     --responsive-fs-md: #{calc.get-em-from-px(12px)};
     --responsive-fs-lg: #{calc.get-em-from-px(13px)};
     --responsive-fs-xl: max(#{calc.get-em-from-px(14px)}, 0.4vw);
+    --responsive-fs-fluid: 1;
 
     --size-xs: 12rem;
     --size-sm: 24rem;

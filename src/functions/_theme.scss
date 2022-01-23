@@ -21,11 +21,11 @@
 }
 
 @function is-shade-in-color-name($color-name) {
-    @if (string.index($color-name, -primary)) {
+    @if (string.index($color-name, primary)) {
         @return true;
-    } @else if (string.index($color-name, -secondary)) {
+    } @else if (string.index($color-name, secondary)) {
         @return true;
-    } @else if (string.index($color-name, -tertiary)) {
+    } @else if (string.index($color-name, tertiary)) {
         @return true;
     }
     @return false;

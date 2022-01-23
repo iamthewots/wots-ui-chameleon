@@ -41,8 +41,13 @@
             }
 
             .#{$prefix}-#{$alignement}-#{$justification} {
-                align-content: $alignement-value;
-                justify-content: $justification-value;
+                @if ($display == flex) {
+                    align-content: $alignement-value;
+                    justify-content: $justification-value;
+                } @else {
+                    align-items: $alignement-value;
+                    justify-items: $justification-value;
+                }
                 display: $display;
             }
         }
@@ -52,19 +57,27 @@
 @each $target in content, items, self {
     @each $alignement in top, center, bottom {
         .ali-#{$target}-#{$alignement} {
-            align-#{$target}: calc.get-alignement($alignement, flex);
-            align-#{$target}: calc.get-alignement($alignement, grid);
+            align-#{$target}: calc.get-alignement($alignement, flex) !important;
+            align-#{$target}: calc.get-alignement($alignement, grid) !important;
         }
     }
     @each $justification in left, center, right {
-        .ali-#{$target}-#{$justification} {
-            justify-#{$target}: calc.get-alignement($justification, flex);
-            justify-#{$target}: calc.get-alignement($justification, grid);
+        .jst-#{$target}-#{$justification} {
+            justify-#{$target}: calc.get-alignement(
+                $justification,
+                flex
+            ) !important;
+            justify-#{$target}: calc.get-alignement(
+                $justification,
+                grid
+            ) !important;
         }
     }
 }
 
 .flx {
+    display: flex;
+
     &-wrap {
         flex-wrap: wrap;
 
@@ -85,6 +98,8 @@
 }
 
 .grd {
+    display: grid;
+
     &-dense {
         grid-auto-flow: dense;
     }
@@ -130,12 +145,18 @@
 
 .lay-center {
     @each $target in content, items {
-        place-#{$target}: center;
-        display: grid;
+        &-#{$target} {
+            place-#{$target}: center;
+            display: grid;
+        }
     }
 }
 
-.lay-centered-content {
+.lay-centered {
+    margin: 0 auto;
+}
+
+.lay-centered-main-content {
     margin: 0 auto;
     width: 100%;
     max-width: var(--size-content);
