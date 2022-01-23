@@ -3,13 +3,14 @@
 $sizes: xs, sm, md, lg, xl;
 
 $def-animation-duration: 2;
+$def-animation-timing-function: ease-out;
 $def-aspect-ratios: (
     "1x1": 1,
     "3x2": 1.5,
     "4x3": 1.333333333,
     "16x9": 1.777777778,
     "18x9": 2,
-    "21x9": 2.333333333
+    "21x9": 2.333333333,
 );
 $def-border-shade: secondary-darker;
 $def-border-settings: 0.1rem solid;

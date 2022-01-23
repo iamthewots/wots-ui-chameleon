@@ -55,7 +55,7 @@
 }
 
 @each $target in content, items, self {
-    @each $alignement in top, center, bottom {
+    @each $alignement in top, center {
         .ali-#{$target}-#{$alignement} {
             align-#{$target}: calc.get-alignement($alignement, flex) !important;
             align-#{$target}: calc.get-alignement($alignement, grid) !important;
@@ -71,6 +71,18 @@
                 $justification,
                 grid
             ) !important;
+        }
+    }
+
+    @each $target in content, items {
+        @each $value in space-around, space-between, space-evenly {
+            .ali-#{$target}-#{$value} {
+                align-#{$target}: $value !important;
+            }
+
+            .jst-#{$target}-#{$value} {
+                justify-#{$target}: $value !important;
+            }
         }
     }
 }

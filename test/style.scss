@@ -1,0 +1,32 @@
+@use "../src/main.scss";
+@use "../src/tools.scss";
+
+@include tools.create-palette-classes(facebook);
+@include tools.create-palette-classes(spotify);
+@include tools.create-palette-classes(instagram);
+@include tools.create-palette-classes(twitch);
+@include tools.create-palette-classes(twitter);
+@include tools.create-palette-classes(whatsapp);
+
+@include tools.use-responsive-design(fixed);
+
+body {
+    --ff-main: "Cascadia Code", monospace;
+    --ff-title: "Cascadia Code", monospace;
+}
+
+@keyframes loading {
+    from {
+        background-color: white;
+        transform: translate(0);
+    }
+    to {
+        background-color: pink;
+        transform: translateX(10rem);
+    }
+}
+
+.ani-loading {
+    display: inline-block;
+    animation: zoom-in-md 0.5s steps(2, jump-none) infinite;
+}

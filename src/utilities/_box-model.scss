@@ -52,7 +52,7 @@
             @supports (aspect-ratio: #{$aspect-ratio}) {
                 aspect-ratio: $aspect-ratio;
             }
-            @supports not(aspect-ratio: #{$aspect-ratio}) {
+            @supports not (aspect-ratio: #{$aspect-ratio}) {
                 position: relative;
                 padding-top: math.div(100, $aspect-ratio) * 1%;
 
@@ -109,11 +109,11 @@
         @each $axis in x, y {
             &-#{$axis}-#{$size} {
                 @if ($axis == x) {
-                    width: $size-value;
-                    max-width: 100%;
+                    width: 100%;
+                    max-width: $size-value;
                 } @else {
-                    height: $size-value;
-                    max-height: 100%;
+                    height: 100%;
+                    max-height: $size-value;
                 }
             }
         }
@@ -121,8 +121,8 @@
 
     @each $char-count in 45, 60, 75, 90 {
         &-#{$char-count}ch {
-            width: $char-count * 1ch;
-            max-width: 100%;
+            width: 100%;
+            max-width: $char-count * 1ch;
         }
     }
 }

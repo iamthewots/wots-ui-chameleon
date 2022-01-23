@@ -5,7 +5,7 @@
     "main": "main.scss",
     "scripts": {
         "test": "serve test/",
-        "build": "sass src/main.scss dist/main.css && sass test/main.scss test/main.css"
+        "build": "sass src/main.scss dist/main.css && sass test/style.scss test/style.css"
     },
     "repository": {
         "type": "git",
