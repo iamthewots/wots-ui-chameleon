@@ -1967,6 +1967,39 @@ body {
 .pos-bottom-xl {
   bottom: var(--space-xl);
 }
+.pos-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pos-center-x {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.pos-center-y {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pos-corner-upper-left {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.pos-corner-upper-right {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+.pos-corner-lower-left {
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+.pos-corner-lower-right {
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+}
 .pos-cover {
   inset: 0;
 }

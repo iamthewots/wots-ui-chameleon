@@ -29,6 +29,7 @@ Sass Framework (Chameleon) for Wots UI
 -   **fit**: Width and/or Height
 -   **obj**: Object Fit and Position
 -   **ovf**: Overflow
+-   **pos**: Positioning and Position
 -   **siz**: Size
 -   **txt**: Text
 -   **typ**: Typography presets

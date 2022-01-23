@@ -138,6 +138,48 @@
         }
     }
 
+    &-center {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &-x {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &-y {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    &-corner {
+        &-upper-left {
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        &-upper-right {
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+
+        &-lower-left {
+            bottom: 0;
+            left: 0;
+            transform: translate(-50%, 50%);
+        }
+
+        &-lower-right {
+            bottom: 0;
+            right: 0;
+            transform: translate(50%, 50%);
+        }
+    }
+
     &-cover {
         inset: 0;
     }
