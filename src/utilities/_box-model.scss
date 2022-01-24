@@ -109,11 +109,11 @@
         @each $axis in x, y {
             &-#{$axis}-#{$size} {
                 @if ($axis == x) {
-                    width: 100%;
-                    max-width: $size-value;
+                    width: $size-value;
+                    max-width: 100%;
                 } @else {
-                    height: 100%;
-                    max-height: $size-value;
+                    height: $size-value;
+                    max-height: 100%;
                 }
             }
         }
@@ -121,8 +121,8 @@
 
     @each $char-count in 45, 60, 75, 90 {
         &-#{$char-count}ch {
-            width: 100%;
-            max-width: $char-count * 1ch;
+            width: $char-count * 1ch;
+            max-width: 100%;
         }
     }
 }

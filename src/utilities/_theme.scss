@@ -13,7 +13,7 @@
     }
 }
 
-.box {
+:where(.box) {
     transition: all var(--duration-#{variables.$def-animation-duration}) ease;
     border: theme.get-border();
     border-radius: var(--border-radius);

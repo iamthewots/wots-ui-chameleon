@@ -4,8 +4,8 @@
     "description": "Sass framework for Wots UI",
     "main": "main.scss",
     "scripts": {
-        "test": "serve test/",
-        "build": "sass src/main.scss dist/main.css && sass test/style.scss test/style.css"
+        "build": "sass src/main.scss dist/main.css && sass test/style.scss test/style.css",
+        "serve": "serve test/"
     },
     "repository": {
         "type": "git",

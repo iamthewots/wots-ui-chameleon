@@ -55,7 +55,7 @@
 }
 
 @each $target in content, items, self {
-    @each $alignement in top, center {
+    @each $alignement in top, center, bottom {
         .ali-#{$target}-#{$alignement} {
             align-#{$target}: calc.get-alignement($alignement, flex) !important;
             align-#{$target}: calc.get-alignement($alignement, grid) !important;

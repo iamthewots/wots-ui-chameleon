@@ -7,6 +7,7 @@
 @include tools.create-palette-classes(twitch);
 @include tools.create-palette-classes(twitter);
 @include tools.create-palette-classes(whatsapp);
+@include tools.create-palette-classes(youtube);
 
 @include tools.use-responsive-design(fixed);
 

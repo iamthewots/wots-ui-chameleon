@@ -2,12 +2,18 @@
     overflow: auto;
 
     @each $overflow in auto, hidden, scroll {
-        &-x-#{$overflow} {
+        @each $axis in x, y {
+            &-#{$axis} {
+                overflow-#{$axis}: $overflow;
+            }
+        }
+
+        &-wrapper-x-#{$overflow} {
             overflow-x: $overflow;
             white-space: nowrap;
         }
 
-        &-y-#{$overflow} {
+        &-wrapper-y-#{$overflow} {
             overflow-y: $overflow;
         }
     }

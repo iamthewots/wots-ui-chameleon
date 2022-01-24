@@ -11,9 +11,9 @@
     $palette-tertiary
 ) {
     $palette: (
-        "primary": $palette-primary,
-        "secondary": $palette-secondary,
-        "tertiary": $palette-tertiary,
+        primary: $palette-primary,
+        secondary: $palette-secondary,
+        tertiary: $palette-tertiary,
     );
     @each $shade, $color in $palette {
         @if (meta.type-of($color) != color) {
@@ -94,6 +94,3 @@
         }
     }
 }
-
-// .highlight-hover { background-color: var(--clr-highlight) }
-// .bkg-twitch { background-color: var(--clr-twitch-primary); --clr-highlight: var(--clr-twitch-primary-lighter)
