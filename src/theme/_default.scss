@@ -1,0 +1,29 @@
+@use "./common";
+@use "./engine";
+
+:root {
+    --clr-body: hsl(200, 10%, 98%);
+    --clr-main-primary: hsl(0, 0%, 100%);
+    --clr-main-primary-lighter: hsl(0, 0%, 100%);
+    --clr-main-primary-darker: hsl(0, 0%, 96%);
+    --clr-main-primary-text: var(--clr-text-dark);
+    --clr-main-secondary: hsl(0, 0%, 96%);
+    --clr-main-secondary-lighter: hsl(0, 0%, 100%);
+    --clr-main-secondary-darker: hsl(0, 0%, 92%);
+    --clr-main-secondary-text: var(--clr-text-dark);
+    --clr-main-tertiary: hsl(200, 100%, 50%);
+    --clr-main-tertiary-lighter: hsl(200, 100%, 60%);
+    --clr-main-tertiary-darker: hsl(200, 100%, 40%);
+    --clr-main-tertiary-text: var(--clr-text-light);
+
+    @each $shade in primary, secondary, tertiary {
+        --clr-#{$shade}: var(--clr-main-#{$shade});
+        --clr-#{$shade}-lighter: var(--clr-main-#{$shade});
+        --clr-#{$shade}-darker: var(--clr-main-#{$shade});
+        --clr-#{$shade}-text: var(--clr-main-#{$shade});
+    }
+
+    @each $palette, $palette-map in common.$social-networks-palettes {
+        @include engine.set-color-palette($palette, $palette-map);
+    }
+}

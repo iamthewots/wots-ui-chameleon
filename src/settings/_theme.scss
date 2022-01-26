@@ -1,7 +1,7 @@
 @use "../mixins/theme";
 @use "sass:map";
 
-$common-colors: (
+$common-palettes: (
     amazon: (
         primary: hsl(36, 100%, 50%),
         secondary: hsl(0, 0%, 95%),
@@ -71,7 +71,8 @@ $common-colors: (
     --clr-shadow-primary: hsl(0, 0%, 0%, 0.1);
     --clr-shadow-secondary: hsl(0, 0%, 0%, 0.05);
 
-    @each $palette, $palette-map in $common-colors {
+    // theme build
+    @each $palette, $palette-map in $common-palettes {
         $palette-primary: map.get($palette-map, primary);
         $palette-secondary: map.get($palette-map, secondary);
         $palette-tertiary: map.get($palette-map, tertiary);
