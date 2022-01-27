@@ -1,7 +1,36 @@
+@use "../functions/style";
 @use "../functions/theme";
+@use "../settings/animations";
 @use "../settings/defaults";
 @use "sass:color";
+@use "sass:map";
 @use "sass:meta";
+
+@mixin animation($animation-id, $duration: defaults.$ANIMATION-DURATION) {
+    $animation-duration: style.parse-animation-duration($duration);
+
+    @if (map.has-key(animations.$animations, $animation-id) == false) {
+        animation: $animation-id
+            $animation-duration
+            defaults.$ANIMATION-TIMING-FUNCTION;
+    } @else {
+        $settings: style.parse-animation-settings(
+            map.get(animations.$animations, $animation-id)
+        );
+        $animation-keyframes: map.get($settings, keyframes);
+        $animation-direction: map.get($settings, direction);
+        $animation-fill-mode: map.get($settings, fill-mode);
+        $animation-iteration-count: map.get($settings, iteration-count);
+        $animation-timing-function: map.get($settings, timing-function);
+
+        animation: $animation-keyframes
+            $animation-duration
+            $animation-direction
+            $animation-fill-mode
+            $animation-iteration-count
+            $animation-timing-function;
+    }
+}
 
 @mixin box-shadow($color: null) {
     $shadow-primary: var(--clr-shadow-primary);
@@ -24,7 +53,7 @@
         $shadow-secondary defaults.$SHADOW-SECONDARY-SETTINGS;
 }
 
-@mixin border($color: null) {
+@mixin border($color: null, $coordinate: null) {
     $border-color: var(--clr-border);
     @if (meta.type-of($color) == color) {
         $border-color: $color;
@@ -32,15 +61,18 @@
         $border-color: var(--clr-#{$color}-border);
     }
 
-    border-color: $border-color;
-    border-style: defaults.$BORDER-STYLE;
-    border-width: defaults.$BORDER-WIDTH;
+    $modifier: "";
+    @if ($coordinate != null) {
+        $modifier: -#{$coordinate};
+    }
+    border#{$modifier}: defaults.$BORDER-WIDTH defaults.$BORDER-STYLE
+        $border-color;
 }
 
 @mixin gradient($color: null, $style: linear, $direction: to top) {
-    $step-1: var(--clr-main-primary);
-    $step-2: var(--clr-main-secondary);
-    $step-3: var(--clr-main-tertiary);
+    $step-1: var(--clr-primary-darker);
+    $step-2: var(--clr-primary);
+    $step-3: var(--clr-tertiary-lighter);
 
     @if (meta.type-of($color) == color) {
         $step-1: color.change($color, $lightness: defaults.$SHADES-DELTA * -1);

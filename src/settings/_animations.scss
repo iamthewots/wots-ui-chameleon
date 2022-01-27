@@ -65,7 +65,7 @@ $animations: map.set(
 
 // slide
 @each $direction in left, right, up, down {
-    @each $size in defaults.$sizes {
+    @each $size in defaults.$SIZES {
         $axis: X;
         $distance: var(--distance-#{$size});
         @if ($direction == up or $direction == down) {
@@ -96,3 +96,50 @@ $animations: map.set(
     }
 }
 
+// zoom-in
+@each $size in defaults.$SIZES {
+    $zoom: calc(100% - var(--distance-#{$size}));
+
+    $keyframes-id: zoom-in-#{$size};
+    @keyframes #{$keyframes-id} {
+        from {
+            transform: scale(#{$zoom});
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    $animations: map.set(
+        $animations,
+        $keyframes-id,
+        (
+            keyframes: $keyframes-id,
+            timing-function: ease-out,
+        )
+    );
+}
+
+// zoom-out
+@each $size in defaults.$SIZES {
+    $zoom: calc(100% + var(--distance-#{$size}));
+
+    $keyframes-id: zoom-out-#{$size};
+    @keyframes #{$keyframes-id} {
+        from {
+            transform: scale(#{$zoom});
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    $animations: map.set(
+        $animations,
+        $keyframes-id,
+        (
+            keyframes: $keyframes-id,
+            timing-function: ease-out,
+        )
+    );
+}

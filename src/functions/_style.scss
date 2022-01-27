@@ -1,0 +1,46 @@
+@use "../settings/defaults";
+@use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+
+@function parse-animation-duration($duration) {
+    $animation-duration: var(--duration-#{defaults.$ANIMATION-DURATION});
+    @if (
+        meta.type-of($duration) ==
+            number and
+            math.is-unitless($duration) ==
+            false
+    ) {
+        $animation-duration: $duration;
+    } @else if (list.index(defaults.$SIZES, $duration) != null) {
+        $animation-duration: var(--duration-#{$duration});
+    }
+    @return $animation-duration;
+}
+
+@function parse-animation-settings($settings) {
+    @if (meta.type-of($settings) != map) {
+        @error "Invalid settings provided, it should be a sass map";
+    }
+
+    $default-settings: (
+        keyframes: fade,
+        direction: normal,
+        fill-mode: none,
+        iteration-count: 1,
+        timing-function: defaults.$ANIMATION-TIMING-FUNCTION,
+    );
+    $parsed-settings: ();
+
+    @each $key, $value in $default-settings {
+        $parsed-value: $value;
+        @if (map.has-key($settings, $key)) {
+            $parsed-value: map.get($settings, $key);
+        }
+
+        $parsed-settings: map.set($parsed-settings, $key, $parsed-value);
+    }
+
+    @return $parsed-settings;
+}

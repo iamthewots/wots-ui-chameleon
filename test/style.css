@@ -1,73 +1,33 @@
-:root {
-  --border-radius: 0.5rem;
-  --distance-xs: 10%;
-  --distance-sm: 20%;
-  --distance-md: 30%;
-  --distance-lg: 40%;
-  --distance-xl: 50%;
-  --duration-1: 0.2s;
-  --duration-2: 0.33s;
-  --duration-3: 0.5s;
-  --duration-4: 1s;
-  --duration-5: 2s;
-  --ff-input: monospace;
-  --ff-main: sans-serif;
-  --ff-title: serif;
-  --ff-jumbo: sans-serif;
-  --fs-xs: 1rem;
-  --fs-sm: 1.5rem;
-  --fs-md: 2rem;
-  --fs-lg: 4rem;
-  --fs-xl: 6rem;
-  --responsive-fs-xs: 0.625em;
-  --responsive-fs-sm: 0.6875em;
-  --responsive-fs-md: 0.75em;
-  --responsive-fs-lg: 0.8125em;
-  --responsive-fs-xl: max(0.875em, 0.4vw);
-  --responsive-fs-fluid: 1;
-  --size-xs: 12rem;
-  --size-sm: 24rem;
-  --size-md: 48rem;
-  --size-lg: 84rem;
-  --size-xl: 144rem;
-  --size-content: 120rem;
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 3rem;
-  --space-xl: 6rem;
-}
-
 @keyframes draw-left {
   from {
-    transform: translateX(-100%);
+    transorm: translateX(100%);
   }
   to {
-    transform: translateX(0);
+    transorm: translateX(0);
   }
 }
 @keyframes draw-right {
   from {
-    transform: translateX(-100%);
+    transorm: translateX(-100%);
   }
   to {
-    transform: translateX(0);
+    transorm: translateX(0);
   }
 }
 @keyframes draw-up {
   from {
-    transform: translateY(-100%);
+    transorm: translateY(100%);
   }
   to {
-    transform: translateY(0);
+    transorm: translateY(0);
   }
 }
 @keyframes draw-down {
   from {
-    transform: translateY(-100%);
+    transorm: translateY(-100%);
   }
   to {
-    transform: translateY(0);
+    transorm: translateY(0);
   }
 }
 @keyframes fade {
@@ -120,7 +80,7 @@
 }
 @keyframes slide-right-xs {
   from {
-    transform: translateX(var(--distance-xs));
+    transform: translateX(calc(var(--distance-xs) * -1));
   }
   to {
     transform: translateX(0);
@@ -128,7 +88,7 @@
 }
 @keyframes slide-right-sm {
   from {
-    transform: translateX(var(--distance-sm));
+    transform: translateX(calc(var(--distance-sm) * -1));
   }
   to {
     transform: translateX(0);
@@ -136,7 +96,7 @@
 }
 @keyframes slide-right-md {
   from {
-    transform: translateX(var(--distance-md));
+    transform: translateX(calc(var(--distance-md) * -1));
   }
   to {
     transform: translateX(0);
@@ -144,7 +104,7 @@
 }
 @keyframes slide-right-lg {
   from {
-    transform: translateX(var(--distance-lg));
+    transform: translateX(calc(var(--distance-lg) * -1));
   }
   to {
     transform: translateX(0);
@@ -152,7 +112,7 @@
 }
 @keyframes slide-right-xl {
   from {
-    transform: translateX(var(--distance-xl));
+    transform: translateX(calc(var(--distance-xl) * -1));
   }
   to {
     transform: translateX(0);
@@ -200,7 +160,7 @@
 }
 @keyframes slide-down-xs {
   from {
-    transform: translateY(var(--distance-xs));
+    transform: translateY(calc(var(--distance-xs) * -1));
   }
   to {
     transform: translateY(0);
@@ -208,7 +168,7 @@
 }
 @keyframes slide-down-sm {
   from {
-    transform: translateY(var(--distance-sm));
+    transform: translateY(calc(var(--distance-sm) * -1));
   }
   to {
     transform: translateY(0);
@@ -216,7 +176,7 @@
 }
 @keyframes slide-down-md {
   from {
-    transform: translateY(var(--distance-md));
+    transform: translateY(calc(var(--distance-md) * -1));
   }
   to {
     transform: translateY(0);
@@ -224,7 +184,7 @@
 }
 @keyframes slide-down-lg {
   from {
-    transform: translateY(var(--distance-lg));
+    transform: translateY(calc(var(--distance-lg) * -1));
   }
   to {
     transform: translateY(0);
@@ -232,7 +192,7 @@
 }
 @keyframes slide-down-xl {
   from {
-    transform: translateY(var(--distance-xl));
+    transform: translateY(calc(var(--distance-xl) * -1));
   }
   to {
     transform: translateY(0);
@@ -318,6 +278,219 @@
     transform: scale(1);
   }
 }
+:root {
+  --clr-body: hsl(200, 10%, 98%);
+  --clr-text: hsl(0, 0%, 5%);
+  --clr-text-light: hsl(0, 0%, 95%);
+  --clr-text-dark: hsl(0, 0%, 5%);
+  --clr-main-primary: white;
+  --clr-main-primary-lighter: white;
+  --clr-main-primary-darker: #d9d9d9;
+  --clr-main-primary-text: var(--clr-text-dark);
+  --clr-main-secondary: #e6e6e6;
+  --clr-main-secondary-lighter: #e9e9e9;
+  --clr-main-secondary-darker: #c3c3c3;
+  --clr-main-secondary-text: var(--clr-text-dark);
+  --clr-main-tertiary: #00aaff;
+  --clr-main-tertiary-lighter: #26b7ff;
+  --clr-main-tertiary-darker: #0091d9;
+  --clr-main-tertiary-text: var(--clr-text-light);
+  --clr-main-border: #e6e6e6;
+  --clr-main-overlay: rgba(230, 230, 230, 0.75);
+  --clr-main-shadow-primary: rgba(255, 255, 255, 0.1);
+  --clr-main-shadow-secondary: rgba(255, 255, 255, 0.1);
+}
+
+:root {
+  --clr-primary: var(--clr-main-primary);
+  --clr-primary-lighter: var(--clr-main-primary-lighter);
+  --clr-primary-darker: var(--clr-main-primary-darker);
+  --clr-primary-text: var(--clr-main-primary-text);
+  --clr-secondary: var(--clr-main-secondary);
+  --clr-secondary-lighter: var(--clr-main-secondary-lighter);
+  --clr-secondary-darker: var(--clr-main-secondary-darker);
+  --clr-secondary-text: var(--clr-main-secondary-text);
+  --clr-tertiary: var(--clr-main-tertiary);
+  --clr-tertiary-lighter: var(--clr-main-tertiary-lighter);
+  --clr-tertiary-darker: var(--clr-main-tertiary-darker);
+  --clr-tertiary-text: var(--clr-main-tertiary-text);
+  --clr-border: var(--clr-main-border);
+  --clr-overlay: var(--clr-main-overlay);
+  --clr-shadow-primary: var(--clr-main-shadow-primary);
+  --clr-shadow-secondary: var(--clr-main-shadow-secondary);
+}
+
+:root {
+  --clr-amazon-primary: #ff9900;
+  --clr-amazon-primary-lighter: #ffa826;
+  --clr-amazon-primary-darker: #d98200;
+  --clr-amazon-primary-text: var(--clr-text-dark);
+  --clr-amazon-secondary: #f2f2f2;
+  --clr-amazon-secondary-lighter: #f4f4f4;
+  --clr-amazon-secondary-darker: #cecece;
+  --clr-amazon-secondary-text: var(--clr-text-dark);
+  --clr-amazon-tertiary: #4dafff;
+  --clr-amazon-tertiary-lighter: #67bbff;
+  --clr-amazon-tertiary-darker: #1b98ff;
+  --clr-amazon-tertiary-text: var(--clr-text-dark);
+  --clr-amazon-border: #f2f2f2;
+  --clr-amazon-overlay: rgba(242, 242, 242, 0.75);
+  --clr-amazon-shadow-primary: rgba(255, 153, 0, 0.1);
+  --clr-amazon-shadow-secondary: rgba(255, 153, 0, 0.1);
+}
+
+:root {
+  --clr-facebook-primary: #1876f2;
+  --clr-facebook-primary-lighter: #3a8bf4;
+  --clr-facebook-primary-darker: #0c63d5;
+  --clr-facebook-primary-text: var(--clr-text-light);
+  --clr-facebook-secondary: white;
+  --clr-facebook-secondary-lighter: white;
+  --clr-facebook-secondary-darker: #d9d9d9;
+  --clr-facebook-secondary-text: var(--clr-text-dark);
+  --clr-facebook-tertiary: #ebebeb;
+  --clr-facebook-tertiary-lighter: #eeeeee;
+  --clr-facebook-tertiary-darker: #c7c7c7;
+  --clr-facebook-tertiary-text: var(--clr-text-dark);
+  --clr-facebook-border: white;
+  --clr-facebook-overlay: rgba(255, 255, 255, 0.75);
+  --clr-facebook-shadow-primary: rgba(24, 118, 242, 0.1);
+  --clr-facebook-shadow-secondary: rgba(24, 118, 242, 0.1);
+}
+
+:root {
+  --clr-instagram-primary: #e2326c;
+  --clr-instagram-primary-lighter: #e65182;
+  --clr-instagram-primary-darker: #cd1d58;
+  --clr-instagram-primary-text: var(--clr-text-light);
+  --clr-instagram-secondary: #843bb5;
+  --clr-instagram-secondary-lighter: #9852c7;
+  --clr-instagram-secondary-darker: #70329a;
+  --clr-instagram-secondary-text: var(--clr-text-light);
+  --clr-instagram-tertiary: #f77636;
+  --clr-instagram-tertiary-lighter: #f88b54;
+  --clr-instagram-tertiary-darker: #f5590b;
+  --clr-instagram-tertiary-text: var(--clr-text-dark);
+  --clr-instagram-border: #843bb5;
+  --clr-instagram-overlay: rgba(132, 59, 181, 0.75);
+  --clr-instagram-shadow-primary: rgba(226, 50, 108, 0.1);
+  --clr-instagram-shadow-secondary: rgba(226, 50, 108, 0.1);
+}
+
+:root {
+  --clr-spotify-primary: #1db954;
+  --clr-spotify-primary-lighter: #26dd66;
+  --clr-spotify-primary-darker: #199d47;
+  --clr-spotify-primary-text: var(--clr-text-light);
+  --clr-spotify-secondary: #191414;
+  --clr-spotify-secondary-lighter: #403333;
+  --clr-spotify-secondary-darker: #161111;
+  --clr-spotify-secondary-text: var(--clr-text-light);
+  --clr-spotify-tertiary: white;
+  --clr-spotify-tertiary-lighter: white;
+  --clr-spotify-tertiary-darker: #d9d9d9;
+  --clr-spotify-tertiary-text: var(--clr-text-dark);
+  --clr-spotify-border: #191414;
+  --clr-spotify-overlay: rgba(25, 20, 20, 0.75);
+  --clr-spotify-shadow-primary: rgba(29, 185, 84, 0.1);
+  --clr-spotify-shadow-secondary: rgba(29, 185, 84, 0.1);
+}
+
+:root {
+  --clr-tiktok-primary: #68c8cf;
+  --clr-tiktok-primary-lighter: #7fd1d6;
+  --clr-tiktok-primary-darker: #44bcc4;
+  --clr-tiktok-primary-text: var(--clr-text-dark);
+  --clr-tiktok-secondary: #ee1b50;
+  --clr-tiktok-secondary-lighter: #f03d6a;
+  --clr-tiktok-secondary-darker: #d21040;
+  --clr-tiktok-secondary-text: var(--clr-text-light);
+  --clr-tiktok-tertiary: black;
+  --clr-tiktok-tertiary-lighter: #262626;
+  --clr-tiktok-tertiary-darker: black;
+  --clr-tiktok-tertiary-text: var(--clr-text-light);
+  --clr-tiktok-border: #ee1b50;
+  --clr-tiktok-overlay: rgba(238, 27, 80, 0.75);
+  --clr-tiktok-shadow-primary: rgba(104, 200, 207, 0.1);
+  --clr-tiktok-shadow-secondary: rgba(104, 200, 207, 0.1);
+}
+
+:root {
+  --clr-twitch-primary: #9147ff;
+  --clr-twitch-primary-lighter: #a163ff;
+  --clr-twitch-primary-darker: #7316ff;
+  --clr-twitch-primary-text: var(--clr-text-light);
+  --clr-twitch-secondary: white;
+  --clr-twitch-secondary-lighter: white;
+  --clr-twitch-secondary-darker: #d9d9d9;
+  --clr-twitch-secondary-text: var(--clr-text-dark);
+  --clr-twitch-tertiary: #cc0000;
+  --clr-twitch-tertiary-lighter: #fa0000;
+  --clr-twitch-tertiary-darker: #ad0000;
+  --clr-twitch-tertiary-text: var(--clr-text-light);
+  --clr-twitch-border: white;
+  --clr-twitch-overlay: rgba(255, 255, 255, 0.75);
+  --clr-twitch-shadow-primary: rgba(145, 71, 255, 0.1);
+  --clr-twitch-shadow-secondary: rgba(145, 71, 255, 0.1);
+}
+
+:root {
+  --clr-twitter-primary: #1ca0f2;
+  --clr-twitter-primary-lighter: #3eaef4;
+  --clr-twitter-primary-darker: #0d8bd9;
+  --clr-twitter-primary-text: var(--clr-text-light);
+  --clr-twitter-secondary: #f5f8fa;
+  --clr-twitter-secondary-lighter: #f6f9fb;
+  --clr-twitter-secondary-darker: #c3d5e1;
+  --clr-twitter-secondary-text: var(--clr-text-dark);
+  --clr-twitter-tertiary: #e2e9ee;
+  --clr-twitter-tertiary-lighter: #e7ecf0;
+  --clr-twitter-tertiary-darker: #b7c8d4;
+  --clr-twitter-tertiary-text: var(--clr-text-dark);
+  --clr-twitter-border: #f5f8fa;
+  --clr-twitter-overlay: rgba(245, 248, 250, 0.75);
+  --clr-twitter-shadow-primary: rgba(28, 160, 242, 0.1);
+  --clr-twitter-shadow-secondary: rgba(28, 160, 242, 0.1);
+}
+
+:root {
+  --clr-whatsapp-primary: #25d466;
+  --clr-whatsapp-primary-lighter: #43de7c;
+  --clr-whatsapp-primary-darker: #20b556;
+  --clr-whatsapp-primary-text: var(--clr-text-dark);
+  --clr-whatsapp-secondary: #128c7e;
+  --clr-whatsapp-secondary-lighter: #18bba8;
+  --clr-whatsapp-secondary-darker: #0f776b;
+  --clr-whatsapp-secondary-text: var(--clr-text-light);
+  --clr-whatsapp-tertiary: #f2f2f2;
+  --clr-whatsapp-tertiary-lighter: #f4f4f4;
+  --clr-whatsapp-tertiary-darker: #cecece;
+  --clr-whatsapp-tertiary-text: var(--clr-text-dark);
+  --clr-whatsapp-border: #128c7e;
+  --clr-whatsapp-overlay: rgba(18, 140, 126, 0.75);
+  --clr-whatsapp-shadow-primary: rgba(37, 212, 102, 0.1);
+  --clr-whatsapp-shadow-secondary: rgba(37, 212, 102, 0.1);
+}
+
+:root {
+  --clr-youtube-primary: red;
+  --clr-youtube-primary-lighter: #ff2626;
+  --clr-youtube-primary-darker: #d90000;
+  --clr-youtube-primary-text: var(--clr-text-light);
+  --clr-youtube-secondary: white;
+  --clr-youtube-secondary-lighter: white;
+  --clr-youtube-secondary-darker: #d9d9d9;
+  --clr-youtube-secondary-text: var(--clr-text-dark);
+  --clr-youtube-tertiary: #292929;
+  --clr-youtube-tertiary-lighter: #494949;
+  --clr-youtube-tertiary-darker: #232323;
+  --clr-youtube-tertiary-text: var(--clr-text-light);
+  --clr-youtube-border: white;
+  --clr-youtube-overlay: rgba(255, 255, 255, 0.75);
+  --clr-youtube-shadow-primary: rgba(255, 0, 0, 0.1);
+  --clr-youtube-shadow-secondary: rgba(255, 0, 0, 0.1);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -333,282 +506,173 @@ body {
 }
 
 :root {
-  --clr-body: hsl(200, 10%, 98%);
-  --clr-primary: hsl(0, 0%, 100%);
-  --clr-primary-lighter: hsl(0, 0%, 100%);
-  --clr-primary-darker: hsl(0, 0%, 96%);
-  --clr-primary-text: var(--clr-text-dark);
-  --clr-secondary: hsl(0, 0%, 96%);
-  --clr-secondary-lighter: hsl(0, 0%, 100%);
-  --clr-secondary-darker: hsl(0, 0%, 92%);
-  --clr-secondary-text: var(--clr-text-dark);
-  --clr-tertiary: hsl(200, 100%, 50%);
-  --clr-tertiary-lighter: hsl(200, 100%, 60%);
-  --clr-tertiary-darker: hsl(200, 100%, 40%);
-  --clr-tertiary-text: var(--clr-text-light);
-  --clr-text: hsl(0, 0%, 10%);
-  --clr-text-light: hsl(0, 0%, 100%);
-  --clr-text-dark: hsl(0, 0%, 10%);
-  --clr-border: hsl(0, 0%, 84%);
-  --clr-overlay: hsla(0, 0%, 10%, 0.75);
-  --clr-shadow-primary: hsl(0, 0%, 0%, 0.1);
-  --clr-shadow-secondary: hsl(0, 0%, 0%, 0.05);
-  --clr-amazon-primary: #ff9900;
-  --clr-amazon-primary-lighter: #ffa31a;
-  --clr-amazon-primary-darker: #e68a00;
-  --clr-amazon-primary-text: var(--clr-text-dark);
-  --clr-amazon-secondary: #f2f2f2;
-  --clr-amazon-secondary-lighter: #f4f4f4;
-  --clr-amazon-secondary-darker: #dadada;
-  --clr-amazon-secondary-text: var(--clr-text-dark);
-  --clr-amazon-tertiary: #4dafff;
-  --clr-amazon-tertiary-lighter: #5eb7ff;
-  --clr-amazon-tertiary-darker: #2ba0ff;
-  --clr-amazon-tertiary-text: var(--clr-text-dark);
-  --clr-amazon-shadow-primary: rgba(255, 153, 0, 0.1);
-  --clr-amazon-shadow-secondary: rgba(255, 153, 0, 0.05);
-  --clr-facebook-primary: #1876f2;
-  --clr-facebook-primary-lighter: #2f84f3;
-  --clr-facebook-primary-darker: #0d69e2;
-  --clr-facebook-primary-text: var(--clr-text-light);
-  --clr-facebook-secondary: white;
-  --clr-facebook-secondary-lighter: white;
-  --clr-facebook-secondary-darker: #e6e6e6;
-  --clr-facebook-secondary-text: var(--clr-text-dark);
-  --clr-facebook-tertiary: #ebebeb;
-  --clr-facebook-tertiary-lighter: #ededed;
-  --clr-facebook-tertiary-darker: lightgray;
-  --clr-facebook-tertiary-text: var(--clr-text-dark);
-  --clr-facebook-shadow-primary: rgba(24, 118, 242, 0.1);
-  --clr-facebook-shadow-secondary: rgba(24, 118, 242, 0.05);
-  --clr-instagram-primary: #e2326c;
-  --clr-instagram-primary-lighter: #e5467b;
-  --clr-instagram-primary-darker: #d91f5d;
-  --clr-instagram-primary-text: var(--clr-text-light);
-  --clr-instagram-secondary: #843bb5;
-  --clr-instagram-secondary-lighter: #9247c3;
-  --clr-instagram-secondary-darker: #7735a3;
-  --clr-instagram-secondary-text: var(--clr-text-light);
-  --clr-instagram-tertiary: #f77636;
-  --clr-instagram-tertiary-lighter: #f7844a;
-  --clr-instagram-tertiary-darker: #f56319;
-  --clr-instagram-tertiary-text: var(--clr-text-dark);
-  --clr-instagram-shadow-primary: rgba(226, 50, 108, 0.1);
-  --clr-instagram-shadow-secondary: rgba(226, 50, 108, 0.05);
-  --clr-spotify-primary: #1db954;
-  --clr-spotify-primary-lighter: #21d35f;
-  --clr-spotify-primary-darker: #1aa74b;
-  --clr-spotify-primary-text: var(--clr-text-light);
-  --clr-spotify-secondary: #191414;
-  --clr-spotify-secondary-lighter: #332929;
-  --clr-spotify-secondary-darker: #171212;
-  --clr-spotify-secondary-text: var(--clr-text-light);
-  --clr-spotify-tertiary: white;
-  --clr-spotify-tertiary-lighter: white;
-  --clr-spotify-tertiary-darker: #e6e6e6;
-  --clr-spotify-tertiary-text: var(--clr-text-dark);
-  --clr-spotify-shadow-primary: rgba(29, 185, 84, 0.1);
-  --clr-spotify-shadow-secondary: rgba(29, 185, 84, 0.05);
-  --clr-tiktok-primary: #68c8cf;
-  --clr-tiktok-primary-lighter: #77ced4;
-  --clr-tiktok-primary-darker: #50c0c8;
-  --clr-tiktok-primary-text: var(--clr-text-dark);
-  --clr-tiktok-secondary: #ee1b50;
-  --clr-tiktok-secondary-lighter: #f03261;
-  --clr-tiktok-secondary-darker: #de1144;
-  --clr-tiktok-secondary-text: var(--clr-text-light);
-  --clr-tiktok-tertiary: black;
-  --clr-tiktok-tertiary-lighter: #1a1a1a;
-  --clr-tiktok-tertiary-darker: black;
-  --clr-tiktok-tertiary-text: var(--clr-text-light);
-  --clr-tiktok-shadow-primary: rgba(104, 200, 207, 0.1);
-  --clr-tiktok-shadow-secondary: rgba(104, 200, 207, 0.05);
-  --clr-twitch-primary: #9147ff;
-  --clr-twitch-primary-lighter: #9c5aff;
-  --clr-twitch-primary-darker: #7d27ff;
-  --clr-twitch-primary-text: var(--clr-text-light);
-  --clr-twitch-secondary: white;
-  --clr-twitch-secondary-lighter: white;
-  --clr-twitch-secondary-darker: #e6e6e6;
-  --clr-twitch-secondary-text: var(--clr-text-dark);
-  --clr-twitch-tertiary: #cc0000;
-  --clr-twitch-tertiary-lighter: #eb0000;
-  --clr-twitch-tertiary-darker: #b80000;
-  --clr-twitch-tertiary-text: var(--clr-text-light);
-  --clr-twitch-shadow-primary: rgba(145, 71, 255, 0.1);
-  --clr-twitch-shadow-secondary: rgba(145, 71, 255, 0.05);
-  --clr-twitter-primary: #1ca0f2;
-  --clr-twitter-primary-lighter: #33aaf3;
-  --clr-twitter-primary-darker: #0d93e6;
-  --clr-twitter-primary-text: var(--clr-text-light);
-  --clr-twitter-secondary: #f5f8fa;
-  --clr-twitter-secondary-lighter: #f6f9fa;
-  --clr-twitter-secondary-darker: #d4e1e9;
-  --clr-twitter-secondary-text: var(--clr-text-dark);
-  --clr-twitter-tertiary: #e2e9ee;
-  --clr-twitter-tertiary-lighter: #e5ebf0;
-  --clr-twitter-tertiary-darker: #c5d3dc;
-  --clr-twitter-tertiary-text: var(--clr-text-dark);
-  --clr-twitter-shadow-primary: rgba(28, 160, 242, 0.1);
-  --clr-twitter-shadow-secondary: rgba(28, 160, 242, 0.05);
-  --clr-whatsapp-primary: #25d466;
-  --clr-whatsapp-primary-lighter: #38dc74;
-  --clr-whatsapp-primary-darker: #22bf5b;
-  --clr-whatsapp-primary-text: var(--clr-text-dark);
-  --clr-whatsapp-secondary: #128c7e;
-  --clr-whatsapp-secondary-lighter: #16ab9a;
-  --clr-whatsapp-secondary-darker: #107e71;
-  --clr-whatsapp-secondary-text: var(--clr-text-light);
-  --clr-whatsapp-tertiary: #f2f2f2;
-  --clr-whatsapp-tertiary-lighter: #f4f4f4;
-  --clr-whatsapp-tertiary-darker: #dadada;
-  --clr-whatsapp-tertiary-text: var(--clr-text-dark);
-  --clr-whatsapp-shadow-primary: rgba(37, 212, 102, 0.1);
-  --clr-whatsapp-shadow-secondary: rgba(37, 212, 102, 0.05);
-  --clr-youtube-primary: red;
-  --clr-youtube-primary-lighter: #ff1a1a;
-  --clr-youtube-primary-darker: #e60000;
-  --clr-youtube-primary-text: var(--clr-text-light);
-  --clr-youtube-secondary: white;
-  --clr-youtube-secondary-lighter: white;
-  --clr-youtube-secondary-darker: #e6e6e6;
-  --clr-youtube-secondary-text: var(--clr-text-dark);
-  --clr-youtube-tertiary: #292929;
-  --clr-youtube-tertiary-lighter: #3e3e3e;
-  --clr-youtube-tertiary-darker: #252525;
-  --clr-youtube-tertiary-text: var(--clr-text-light);
-  --clr-youtube-shadow-primary: rgba(255, 0, 0, 0.1);
-  --clr-youtube-shadow-secondary: rgba(255, 0, 0, 0.05);
+  --border-radius: 0.5rem;
+  --distance-xs: 10%;
+  --distance-sm: 20%;
+  --distance-md: 30%;
+  --distance-lg: 40%;
+  --distance-xl: 50%;
+  --duration-xs: 0.2s;
+  --duration-sm: 0.33s;
+  --duration-md: 0.5s;
+  --duration-lg: 1s;
+  --duration-xl: 2s;
+  --ff-input: monospace;
+  --ff-main: sans-serif;
+  --ff-title: serif;
+  --ff-jumbo: sans-serif;
+  --fs-xs: 1rem;
+  --fs-sm: 1.5rem;
+  --fs-md: 2rem;
+  --fs-lg: 4rem;
+  --fs-xl: 6rem;
+  --responsive-fs-xs: 0.625em;
+  --responsive-fs-sm: 0.6875em;
+  --responsive-fs-md: 0.75em;
+  --responsive-fs-lg: 0.8125em;
+  --responsive-fs-xl: max(0.875em, 0.4vw);
+  --responsive-fs-fluid: 1;
+  --size-xs: 12rem;
+  --size-sm: 24rem;
+  --size-md: 48rem;
+  --size-lg: 84rem;
+  --size-xl: 144rem;
+  --size-content: 120rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --space-xl: 6rem;
 }
 
 .ani-draw-left {
-  animation: draw-left normal var(--duration-2) none 1 ease-out;
+  animation: draw-left var(--duration-sm) normal none 1 ease-out;
 }
 .ani-draw-right {
-  animation: draw-right normal var(--duration-2) none 1 ease-out;
+  animation: draw-right var(--duration-sm) normal none 1 ease-out;
 }
 .ani-draw-up {
-  animation: draw-up normal var(--duration-2) none 1 ease-out;
+  animation: draw-up var(--duration-sm) normal none 1 ease-out;
 }
 .ani-draw-down {
-  animation: draw-down normal var(--duration-2) none 1 ease-out;
+  animation: draw-down var(--duration-sm) normal none 1 ease-out;
 }
 .ani-fade {
-  animation: fade normal var(--duration-2) none 1 ease-out;
+  animation: fade var(--duration-sm) normal none 1 ease-out;
 }
 .ani-blink {
-  animation: fade normal var(--duration-2) none infinite steps(2, jump-none);
+  animation: fade var(--duration-sm) normal none infinite steps(2, jump-none);
 }
 .ani-slide-left-xs {
-  animation: slide-left-xs normal var(--duration-2) none 1 ease-out;
+  animation: slide-left-xs var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-left-sm {
-  animation: slide-left-sm normal var(--duration-2) none 1 ease-out;
+  animation: slide-left-sm var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-left-md {
-  animation: slide-left-md normal var(--duration-2) none 1 ease-out;
+  animation: slide-left-md var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-left-lg {
-  animation: slide-left-lg normal var(--duration-2) none 1 ease-out;
+  animation: slide-left-lg var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-left-xl {
-  animation: slide-left-xl normal var(--duration-2) none 1 ease-out;
+  animation: slide-left-xl var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-right-xs {
-  animation: slide-right-xs normal var(--duration-2) none 1 ease-out;
+  animation: slide-right-xs var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-right-sm {
-  animation: slide-right-sm normal var(--duration-2) none 1 ease-out;
+  animation: slide-right-sm var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-right-md {
-  animation: slide-right-md normal var(--duration-2) none 1 ease-out;
+  animation: slide-right-md var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-right-lg {
-  animation: slide-right-lg normal var(--duration-2) none 1 ease-out;
+  animation: slide-right-lg var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-right-xl {
-  animation: slide-right-xl normal var(--duration-2) none 1 ease-out;
+  animation: slide-right-xl var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-up-xs {
-  animation: slide-up-xs normal var(--duration-2) none 1 ease-out;
+  animation: slide-up-xs var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-up-sm {
-  animation: slide-up-sm normal var(--duration-2) none 1 ease-out;
+  animation: slide-up-sm var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-up-md {
-  animation: slide-up-md normal var(--duration-2) none 1 ease-out;
+  animation: slide-up-md var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-up-lg {
-  animation: slide-up-lg normal var(--duration-2) none 1 ease-out;
+  animation: slide-up-lg var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-up-xl {
-  animation: slide-up-xl normal var(--duration-2) none 1 ease-out;
+  animation: slide-up-xl var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-down-xs {
-  animation: slide-down-xs normal var(--duration-2) none 1 ease-out;
+  animation: slide-down-xs var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-down-sm {
-  animation: slide-down-sm normal var(--duration-2) none 1 ease-out;
+  animation: slide-down-sm var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-down-md {
-  animation: slide-down-md normal var(--duration-2) none 1 ease-out;
+  animation: slide-down-md var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-down-lg {
-  animation: slide-down-lg normal var(--duration-2) none 1 ease-out;
+  animation: slide-down-lg var(--duration-sm) normal none 1 ease-out;
 }
 .ani-slide-down-xl {
-  animation: slide-down-xl normal var(--duration-2) none 1 ease-out;
+  animation: slide-down-xl var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-in-xs {
-  animation: zoom-in-xs normal var(--duration-2) none 1 ease-out;
+  animation: zoom-in-xs var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-in-sm {
-  animation: zoom-in-sm normal var(--duration-2) none 1 ease-out;
+  animation: zoom-in-sm var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-in-md {
-  animation: zoom-in-md normal var(--duration-2) none 1 ease-out;
+  animation: zoom-in-md var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-in-lg {
-  animation: zoom-in-lg normal var(--duration-2) none 1 ease-out;
+  animation: zoom-in-lg var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-in-xl {
-  animation: zoom-in-xl normal var(--duration-2) none 1 ease-out;
+  animation: zoom-in-xl var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-out-xs {
-  animation: zoom-out-xs normal var(--duration-2) none 1 ease-out;
+  animation: zoom-out-xs var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-out-sm {
-  animation: zoom-out-sm normal var(--duration-2) none 1 ease-out;
+  animation: zoom-out-sm var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-out-md {
-  animation: zoom-out-md normal var(--duration-2) none 1 ease-out;
+  animation: zoom-out-md var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-out-lg {
-  animation: zoom-out-lg normal var(--duration-2) none 1 ease-out;
+  animation: zoom-out-lg var(--duration-sm) normal none 1 ease-out;
 }
 .ani-zoom-out-xl {
-  animation: zoom-out-xl normal var(--duration-2) none 1 ease-out;
+  animation: zoom-out-xl var(--duration-sm) normal none 1 ease-out;
 }
-.ani-duration-1 {
-  animation-duration: var(--duration-1);
+.ani-duration-xs {
+  animation-duration: var(--duration-xs);
 }
-.ani-duration-2 {
-  animation-duration: var(--duration-2);
+.ani-duration-sm {
+  animation-duration: var(--duration-sm);
 }
-.ani-duration-3 {
-  animation-duration: var(--duration-3);
+.ani-duration-md {
+  animation-duration: var(--duration-md);
 }
-.ani-duration-4 {
-  animation-duration: var(--duration-4);
+.ani-duration-lg {
+  animation-duration: var(--duration-lg);
 }
-.ani-duration-5 {
-  animation-duration: var(--duration-5);
-}
-.ani-infinite {
-  animation-iteration-count: infinite;
+.ani-duration-xl {
+  animation-duration: var(--duration-xl);
 }
 .ani-alternate {
   animation-direction: alternate;
+}
+.ani-infinite {
+  animation-iteration-count: infinite;
 }
 
 .g-0 {
@@ -2628,7 +2692,6 @@ body {
 }
 
 .bkg-primary {
-  background-clip: padding-box;
   background-color: var(--clr-primary) !important;
   color: var(--clr-primary-text) !important;
 }
@@ -2637,7 +2700,6 @@ body {
 }
 
 .bkg-secondary {
-  background-clip: padding-box;
   background-color: var(--clr-secondary) !important;
   color: var(--clr-secondary-text) !important;
 }
@@ -2646,7 +2708,6 @@ body {
 }
 
 .bkg-tertiary {
-  background-clip: padding-box;
   background-color: var(--clr-tertiary) !important;
   color: var(--clr-tertiary-text) !important;
 }
@@ -2655,8 +2716,8 @@ body {
 }
 
 :where(.box) {
-  transition: all var(--duration-2) ease;
   border: 0.1rem solid var(--clr-border);
+  transition: all var(--duration-sm) ease-out;
   border-radius: var(--border-radius);
   padding: var(--space-sm);
   background-color: var(--clr-primary);
@@ -2696,16 +2757,13 @@ body {
 }
 
 .grd-primary {
-  background-image: linear-gradient(to top, var(--clr-primary-darker), var(--clr-primary), var(--clr-primary-lighter));
-  color: var(--clr-primary-text);
+  background-image: linear-gradient(to top, var(--clr-primary-darker), var(--clr-primary), var(--clr-tertiary-lighter));
 }
 .grd-secondary {
-  background-image: linear-gradient(to top, var(--clr-secondary-darker), var(--clr-secondary), var(--clr-secondary-lighter));
-  color: var(--clr-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-primary-darker), var(--clr-primary), var(--clr-tertiary-lighter));
 }
 .grd-tertiary {
-  background-image: linear-gradient(to top, var(--clr-tertiary-darker), var(--clr-tertiary), var(--clr-tertiary-lighter));
-  color: var(--clr-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-primary-darker), var(--clr-primary), var(--clr-tertiary-lighter));
 }
 
 .ff-banner {
@@ -2818,19 +2876,16 @@ body {
   background-color: var(--clr-facebook-primary);
   color: var(--clr-facebook-primary-text);
 }
-.bkg-facebook-primary.hlg-hover:hover {
-  background-color: var(--clr-facebook-primary-lighter);
-}
 
 .brd-facebook-primary {
-  border-color: var(--clr-facebook-primary-darker);
+  border-color: var(--clr-facebook-primary);
 }
 
 .bsh-facebook-primary {
-  box-shadow: var(--clr-facebook-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebook-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-facebookshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebookshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-facebook-primary-hover:hover {
-  box-shadow: var(--clr-facebook-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebook-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-facebookshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebookshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-facebook-primary {
@@ -2839,26 +2894,22 @@ body {
 
 .grd-facebook-primary {
   background-image: linear-gradient(to top, var(--clr-facebook-primary-darker), var(--clr-facebook-primary), var(--clr-facebook-primary-lighter));
-  color: var(--clr-facebook-primary-text);
 }
 
 .bkg-facebook-secondary {
   background-color: var(--clr-facebook-secondary);
   color: var(--clr-facebook-secondary-text);
 }
-.bkg-facebook-secondary.hlg-hover:hover {
-  background-color: var(--clr-facebook-secondary-lighter);
-}
 
 .brd-facebook-secondary {
-  border-color: var(--clr-facebook-secondary-darker);
+  border-color: var(--clr-facebook-secondary);
 }
 
 .bsh-facebook-secondary {
-  box-shadow: var(--clr-facebook-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebook-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-facebookshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebookshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-facebook-secondary-hover:hover {
-  box-shadow: var(--clr-facebook-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebook-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-facebookshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebookshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-facebook-secondary {
@@ -2866,27 +2917,23 @@ body {
 }
 
 .grd-facebook-secondary {
-  background-image: linear-gradient(to top, var(--clr-facebook-secondary-darker), var(--clr-facebook-secondary), var(--clr-facebook-secondary-lighter));
-  color: var(--clr-facebook-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-facebook-primary-darker), var(--clr-facebook-primary), var(--clr-facebook-primary-lighter));
 }
 
 .bkg-facebook-tertiary {
   background-color: var(--clr-facebook-tertiary);
   color: var(--clr-facebook-tertiary-text);
 }
-.bkg-facebook-tertiary.hlg-hover:hover {
-  background-color: var(--clr-facebook-tertiary-lighter);
-}
 
 .brd-facebook-tertiary {
-  border-color: var(--clr-facebook-tertiary-darker);
+  border-color: var(--clr-facebook-tertiary);
 }
 
 .bsh-facebook-tertiary {
-  box-shadow: var(--clr-facebook-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebook-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-facebookshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebookshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-facebook-tertiary-hover:hover {
-  box-shadow: var(--clr-facebook-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebook-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-facebookshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-facebookshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-facebook-tertiary {
@@ -2894,12 +2941,10 @@ body {
 }
 
 .grd-facebook-tertiary {
-  background-image: linear-gradient(to top, var(--clr-facebook-tertiary-darker), var(--clr-facebook-tertiary), var(--clr-facebook-tertiary-lighter));
-  color: var(--clr-facebook-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-facebook-primary-darker), var(--clr-facebook-primary), var(--clr-facebook-primary-lighter));
 }
 
 .pal-facebook {
-  --clr-border: var(--clr-facebook-secondary-darker);
   --clr-primary: var(--clr-facebook-primary);
   --clr-primary-lighter: var(--clr-facebook-primary-lighter);
   --clr-primary-darker: var(--clr-facebook-primary-darker);
@@ -2912,25 +2957,26 @@ body {
   --clr-tertiary-lighter: var(--clr-facebook-tertiary-lighter);
   --clr-tertiary-darker: var(--clr-facebook-tertiary-darker);
   --clr-tertiary-text: var(--clr-facebook-tertiary-text);
+  --clr-border: var(--clr-facebook-border);
+  --clr-overlay: var(--clr-facebook-overlay);
+  --clr-shadow-primary: var(--clr-facebook-shadow-primary);
+  --clr-shadow-secondary: var(--clr-facebook-shadow-secondary);
 }
 
 .bkg-spotify-primary {
   background-color: var(--clr-spotify-primary);
   color: var(--clr-spotify-primary-text);
 }
-.bkg-spotify-primary.hlg-hover:hover {
-  background-color: var(--clr-spotify-primary-lighter);
-}
 
 .brd-spotify-primary {
-  border-color: var(--clr-spotify-primary-darker);
+  border-color: var(--clr-spotify-primary);
 }
 
 .bsh-spotify-primary {
-  box-shadow: var(--clr-spotify-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotify-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-spotifyshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotifyshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-spotify-primary-hover:hover {
-  box-shadow: var(--clr-spotify-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotify-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-spotifyshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotifyshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-spotify-primary {
@@ -2939,26 +2985,22 @@ body {
 
 .grd-spotify-primary {
   background-image: linear-gradient(to top, var(--clr-spotify-primary-darker), var(--clr-spotify-primary), var(--clr-spotify-primary-lighter));
-  color: var(--clr-spotify-primary-text);
 }
 
 .bkg-spotify-secondary {
   background-color: var(--clr-spotify-secondary);
   color: var(--clr-spotify-secondary-text);
 }
-.bkg-spotify-secondary.hlg-hover:hover {
-  background-color: var(--clr-spotify-secondary-lighter);
-}
 
 .brd-spotify-secondary {
-  border-color: var(--clr-spotify-secondary-darker);
+  border-color: var(--clr-spotify-secondary);
 }
 
 .bsh-spotify-secondary {
-  box-shadow: var(--clr-spotify-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotify-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-spotifyshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotifyshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-spotify-secondary-hover:hover {
-  box-shadow: var(--clr-spotify-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotify-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-spotifyshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotifyshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-spotify-secondary {
@@ -2966,27 +3008,23 @@ body {
 }
 
 .grd-spotify-secondary {
-  background-image: linear-gradient(to top, var(--clr-spotify-secondary-darker), var(--clr-spotify-secondary), var(--clr-spotify-secondary-lighter));
-  color: var(--clr-spotify-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-spotify-primary-darker), var(--clr-spotify-primary), var(--clr-spotify-primary-lighter));
 }
 
 .bkg-spotify-tertiary {
   background-color: var(--clr-spotify-tertiary);
   color: var(--clr-spotify-tertiary-text);
 }
-.bkg-spotify-tertiary.hlg-hover:hover {
-  background-color: var(--clr-spotify-tertiary-lighter);
-}
 
 .brd-spotify-tertiary {
-  border-color: var(--clr-spotify-tertiary-darker);
+  border-color: var(--clr-spotify-tertiary);
 }
 
 .bsh-spotify-tertiary {
-  box-shadow: var(--clr-spotify-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotify-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-spotifyshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotifyshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-spotify-tertiary-hover:hover {
-  box-shadow: var(--clr-spotify-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotify-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-spotifyshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-spotifyshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-spotify-tertiary {
@@ -2994,12 +3032,10 @@ body {
 }
 
 .grd-spotify-tertiary {
-  background-image: linear-gradient(to top, var(--clr-spotify-tertiary-darker), var(--clr-spotify-tertiary), var(--clr-spotify-tertiary-lighter));
-  color: var(--clr-spotify-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-spotify-primary-darker), var(--clr-spotify-primary), var(--clr-spotify-primary-lighter));
 }
 
 .pal-spotify {
-  --clr-border: var(--clr-spotify-secondary-darker);
   --clr-primary: var(--clr-spotify-primary);
   --clr-primary-lighter: var(--clr-spotify-primary-lighter);
   --clr-primary-darker: var(--clr-spotify-primary-darker);
@@ -3012,25 +3048,26 @@ body {
   --clr-tertiary-lighter: var(--clr-spotify-tertiary-lighter);
   --clr-tertiary-darker: var(--clr-spotify-tertiary-darker);
   --clr-tertiary-text: var(--clr-spotify-tertiary-text);
+  --clr-border: var(--clr-spotify-border);
+  --clr-overlay: var(--clr-spotify-overlay);
+  --clr-shadow-primary: var(--clr-spotify-shadow-primary);
+  --clr-shadow-secondary: var(--clr-spotify-shadow-secondary);
 }
 
 .bkg-instagram-primary {
   background-color: var(--clr-instagram-primary);
   color: var(--clr-instagram-primary-text);
 }
-.bkg-instagram-primary.hlg-hover:hover {
-  background-color: var(--clr-instagram-primary-lighter);
-}
 
 .brd-instagram-primary {
-  border-color: var(--clr-instagram-primary-darker);
+  border-color: var(--clr-instagram-primary);
 }
 
 .bsh-instagram-primary {
-  box-shadow: var(--clr-instagram-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagram-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-instagramshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagramshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-instagram-primary-hover:hover {
-  box-shadow: var(--clr-instagram-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagram-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-instagramshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagramshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-instagram-primary {
@@ -3039,26 +3076,22 @@ body {
 
 .grd-instagram-primary {
   background-image: linear-gradient(to top, var(--clr-instagram-primary-darker), var(--clr-instagram-primary), var(--clr-instagram-primary-lighter));
-  color: var(--clr-instagram-primary-text);
 }
 
 .bkg-instagram-secondary {
   background-color: var(--clr-instagram-secondary);
   color: var(--clr-instagram-secondary-text);
 }
-.bkg-instagram-secondary.hlg-hover:hover {
-  background-color: var(--clr-instagram-secondary-lighter);
-}
 
 .brd-instagram-secondary {
-  border-color: var(--clr-instagram-secondary-darker);
+  border-color: var(--clr-instagram-secondary);
 }
 
 .bsh-instagram-secondary {
-  box-shadow: var(--clr-instagram-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagram-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-instagramshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagramshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-instagram-secondary-hover:hover {
-  box-shadow: var(--clr-instagram-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagram-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-instagramshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagramshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-instagram-secondary {
@@ -3066,27 +3099,23 @@ body {
 }
 
 .grd-instagram-secondary {
-  background-image: linear-gradient(to top, var(--clr-instagram-secondary-darker), var(--clr-instagram-secondary), var(--clr-instagram-secondary-lighter));
-  color: var(--clr-instagram-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-instagram-primary-darker), var(--clr-instagram-primary), var(--clr-instagram-primary-lighter));
 }
 
 .bkg-instagram-tertiary {
   background-color: var(--clr-instagram-tertiary);
   color: var(--clr-instagram-tertiary-text);
 }
-.bkg-instagram-tertiary.hlg-hover:hover {
-  background-color: var(--clr-instagram-tertiary-lighter);
-}
 
 .brd-instagram-tertiary {
-  border-color: var(--clr-instagram-tertiary-darker);
+  border-color: var(--clr-instagram-tertiary);
 }
 
 .bsh-instagram-tertiary {
-  box-shadow: var(--clr-instagram-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagram-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-instagramshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagramshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-instagram-tertiary-hover:hover {
-  box-shadow: var(--clr-instagram-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagram-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-instagramshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-instagramshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-instagram-tertiary {
@@ -3094,12 +3123,10 @@ body {
 }
 
 .grd-instagram-tertiary {
-  background-image: linear-gradient(to top, var(--clr-instagram-tertiary-darker), var(--clr-instagram-tertiary), var(--clr-instagram-tertiary-lighter));
-  color: var(--clr-instagram-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-instagram-primary-darker), var(--clr-instagram-primary), var(--clr-instagram-primary-lighter));
 }
 
 .pal-instagram {
-  --clr-border: var(--clr-instagram-secondary-darker);
   --clr-primary: var(--clr-instagram-primary);
   --clr-primary-lighter: var(--clr-instagram-primary-lighter);
   --clr-primary-darker: var(--clr-instagram-primary-darker);
@@ -3112,25 +3139,26 @@ body {
   --clr-tertiary-lighter: var(--clr-instagram-tertiary-lighter);
   --clr-tertiary-darker: var(--clr-instagram-tertiary-darker);
   --clr-tertiary-text: var(--clr-instagram-tertiary-text);
+  --clr-border: var(--clr-instagram-border);
+  --clr-overlay: var(--clr-instagram-overlay);
+  --clr-shadow-primary: var(--clr-instagram-shadow-primary);
+  --clr-shadow-secondary: var(--clr-instagram-shadow-secondary);
 }
 
 .bkg-twitch-primary {
   background-color: var(--clr-twitch-primary);
   color: var(--clr-twitch-primary-text);
 }
-.bkg-twitch-primary.hlg-hover:hover {
-  background-color: var(--clr-twitch-primary-lighter);
-}
 
 .brd-twitch-primary {
-  border-color: var(--clr-twitch-primary-darker);
+  border-color: var(--clr-twitch-primary);
 }
 
 .bsh-twitch-primary {
-  box-shadow: var(--clr-twitch-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitch-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twitchshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitchshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-twitch-primary-hover:hover {
-  box-shadow: var(--clr-twitch-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitch-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twitchshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitchshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-twitch-primary {
@@ -3139,26 +3167,22 @@ body {
 
 .grd-twitch-primary {
   background-image: linear-gradient(to top, var(--clr-twitch-primary-darker), var(--clr-twitch-primary), var(--clr-twitch-primary-lighter));
-  color: var(--clr-twitch-primary-text);
 }
 
 .bkg-twitch-secondary {
   background-color: var(--clr-twitch-secondary);
   color: var(--clr-twitch-secondary-text);
 }
-.bkg-twitch-secondary.hlg-hover:hover {
-  background-color: var(--clr-twitch-secondary-lighter);
-}
 
 .brd-twitch-secondary {
-  border-color: var(--clr-twitch-secondary-darker);
+  border-color: var(--clr-twitch-secondary);
 }
 
 .bsh-twitch-secondary {
-  box-shadow: var(--clr-twitch-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitch-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twitchshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitchshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-twitch-secondary-hover:hover {
-  box-shadow: var(--clr-twitch-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitch-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twitchshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitchshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-twitch-secondary {
@@ -3166,27 +3190,23 @@ body {
 }
 
 .grd-twitch-secondary {
-  background-image: linear-gradient(to top, var(--clr-twitch-secondary-darker), var(--clr-twitch-secondary), var(--clr-twitch-secondary-lighter));
-  color: var(--clr-twitch-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-twitch-primary-darker), var(--clr-twitch-primary), var(--clr-twitch-primary-lighter));
 }
 
 .bkg-twitch-tertiary {
   background-color: var(--clr-twitch-tertiary);
   color: var(--clr-twitch-tertiary-text);
 }
-.bkg-twitch-tertiary.hlg-hover:hover {
-  background-color: var(--clr-twitch-tertiary-lighter);
-}
 
 .brd-twitch-tertiary {
-  border-color: var(--clr-twitch-tertiary-darker);
+  border-color: var(--clr-twitch-tertiary);
 }
 
 .bsh-twitch-tertiary {
-  box-shadow: var(--clr-twitch-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitch-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twitchshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitchshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-twitch-tertiary-hover:hover {
-  box-shadow: var(--clr-twitch-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitch-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twitchshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitchshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-twitch-tertiary {
@@ -3194,12 +3214,10 @@ body {
 }
 
 .grd-twitch-tertiary {
-  background-image: linear-gradient(to top, var(--clr-twitch-tertiary-darker), var(--clr-twitch-tertiary), var(--clr-twitch-tertiary-lighter));
-  color: var(--clr-twitch-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-twitch-primary-darker), var(--clr-twitch-primary), var(--clr-twitch-primary-lighter));
 }
 
 .pal-twitch {
-  --clr-border: var(--clr-twitch-secondary-darker);
   --clr-primary: var(--clr-twitch-primary);
   --clr-primary-lighter: var(--clr-twitch-primary-lighter);
   --clr-primary-darker: var(--clr-twitch-primary-darker);
@@ -3212,25 +3230,26 @@ body {
   --clr-tertiary-lighter: var(--clr-twitch-tertiary-lighter);
   --clr-tertiary-darker: var(--clr-twitch-tertiary-darker);
   --clr-tertiary-text: var(--clr-twitch-tertiary-text);
+  --clr-border: var(--clr-twitch-border);
+  --clr-overlay: var(--clr-twitch-overlay);
+  --clr-shadow-primary: var(--clr-twitch-shadow-primary);
+  --clr-shadow-secondary: var(--clr-twitch-shadow-secondary);
 }
 
 .bkg-twitter-primary {
   background-color: var(--clr-twitter-primary);
   color: var(--clr-twitter-primary-text);
 }
-.bkg-twitter-primary.hlg-hover:hover {
-  background-color: var(--clr-twitter-primary-lighter);
-}
 
 .brd-twitter-primary {
-  border-color: var(--clr-twitter-primary-darker);
+  border-color: var(--clr-twitter-primary);
 }
 
 .bsh-twitter-primary {
-  box-shadow: var(--clr-twitter-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitter-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twittershadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twittershadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-twitter-primary-hover:hover {
-  box-shadow: var(--clr-twitter-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitter-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twittershadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twittershadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-twitter-primary {
@@ -3239,26 +3258,22 @@ body {
 
 .grd-twitter-primary {
   background-image: linear-gradient(to top, var(--clr-twitter-primary-darker), var(--clr-twitter-primary), var(--clr-twitter-primary-lighter));
-  color: var(--clr-twitter-primary-text);
 }
 
 .bkg-twitter-secondary {
   background-color: var(--clr-twitter-secondary);
   color: var(--clr-twitter-secondary-text);
 }
-.bkg-twitter-secondary.hlg-hover:hover {
-  background-color: var(--clr-twitter-secondary-lighter);
-}
 
 .brd-twitter-secondary {
-  border-color: var(--clr-twitter-secondary-darker);
+  border-color: var(--clr-twitter-secondary);
 }
 
 .bsh-twitter-secondary {
-  box-shadow: var(--clr-twitter-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitter-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twittershadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twittershadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-twitter-secondary-hover:hover {
-  box-shadow: var(--clr-twitter-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitter-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twittershadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twittershadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-twitter-secondary {
@@ -3266,27 +3281,23 @@ body {
 }
 
 .grd-twitter-secondary {
-  background-image: linear-gradient(to top, var(--clr-twitter-secondary-darker), var(--clr-twitter-secondary), var(--clr-twitter-secondary-lighter));
-  color: var(--clr-twitter-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-twitter-primary-darker), var(--clr-twitter-primary), var(--clr-twitter-primary-lighter));
 }
 
 .bkg-twitter-tertiary {
   background-color: var(--clr-twitter-tertiary);
   color: var(--clr-twitter-tertiary-text);
 }
-.bkg-twitter-tertiary.hlg-hover:hover {
-  background-color: var(--clr-twitter-tertiary-lighter);
-}
 
 .brd-twitter-tertiary {
-  border-color: var(--clr-twitter-tertiary-darker);
+  border-color: var(--clr-twitter-tertiary);
 }
 
 .bsh-twitter-tertiary {
-  box-shadow: var(--clr-twitter-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitter-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twittershadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twittershadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-twitter-tertiary-hover:hover {
-  box-shadow: var(--clr-twitter-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twitter-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-twittershadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-twittershadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-twitter-tertiary {
@@ -3294,12 +3305,10 @@ body {
 }
 
 .grd-twitter-tertiary {
-  background-image: linear-gradient(to top, var(--clr-twitter-tertiary-darker), var(--clr-twitter-tertiary), var(--clr-twitter-tertiary-lighter));
-  color: var(--clr-twitter-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-twitter-primary-darker), var(--clr-twitter-primary), var(--clr-twitter-primary-lighter));
 }
 
 .pal-twitter {
-  --clr-border: var(--clr-twitter-secondary-darker);
   --clr-primary: var(--clr-twitter-primary);
   --clr-primary-lighter: var(--clr-twitter-primary-lighter);
   --clr-primary-darker: var(--clr-twitter-primary-darker);
@@ -3312,25 +3321,26 @@ body {
   --clr-tertiary-lighter: var(--clr-twitter-tertiary-lighter);
   --clr-tertiary-darker: var(--clr-twitter-tertiary-darker);
   --clr-tertiary-text: var(--clr-twitter-tertiary-text);
+  --clr-border: var(--clr-twitter-border);
+  --clr-overlay: var(--clr-twitter-overlay);
+  --clr-shadow-primary: var(--clr-twitter-shadow-primary);
+  --clr-shadow-secondary: var(--clr-twitter-shadow-secondary);
 }
 
 .bkg-whatsapp-primary {
   background-color: var(--clr-whatsapp-primary);
   color: var(--clr-whatsapp-primary-text);
 }
-.bkg-whatsapp-primary.hlg-hover:hover {
-  background-color: var(--clr-whatsapp-primary-lighter);
-}
 
 .brd-whatsapp-primary {
-  border-color: var(--clr-whatsapp-primary-darker);
+  border-color: var(--clr-whatsapp-primary);
 }
 
 .bsh-whatsapp-primary {
-  box-shadow: var(--clr-whatsapp-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsapp-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-whatsappshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsappshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-whatsapp-primary-hover:hover {
-  box-shadow: var(--clr-whatsapp-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsapp-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-whatsappshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsappshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-whatsapp-primary {
@@ -3339,26 +3349,22 @@ body {
 
 .grd-whatsapp-primary {
   background-image: linear-gradient(to top, var(--clr-whatsapp-primary-darker), var(--clr-whatsapp-primary), var(--clr-whatsapp-primary-lighter));
-  color: var(--clr-whatsapp-primary-text);
 }
 
 .bkg-whatsapp-secondary {
   background-color: var(--clr-whatsapp-secondary);
   color: var(--clr-whatsapp-secondary-text);
 }
-.bkg-whatsapp-secondary.hlg-hover:hover {
-  background-color: var(--clr-whatsapp-secondary-lighter);
-}
 
 .brd-whatsapp-secondary {
-  border-color: var(--clr-whatsapp-secondary-darker);
+  border-color: var(--clr-whatsapp-secondary);
 }
 
 .bsh-whatsapp-secondary {
-  box-shadow: var(--clr-whatsapp-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsapp-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-whatsappshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsappshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-whatsapp-secondary-hover:hover {
-  box-shadow: var(--clr-whatsapp-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsapp-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-whatsappshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsappshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-whatsapp-secondary {
@@ -3366,27 +3372,23 @@ body {
 }
 
 .grd-whatsapp-secondary {
-  background-image: linear-gradient(to top, var(--clr-whatsapp-secondary-darker), var(--clr-whatsapp-secondary), var(--clr-whatsapp-secondary-lighter));
-  color: var(--clr-whatsapp-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-whatsapp-primary-darker), var(--clr-whatsapp-primary), var(--clr-whatsapp-primary-lighter));
 }
 
 .bkg-whatsapp-tertiary {
   background-color: var(--clr-whatsapp-tertiary);
   color: var(--clr-whatsapp-tertiary-text);
 }
-.bkg-whatsapp-tertiary.hlg-hover:hover {
-  background-color: var(--clr-whatsapp-tertiary-lighter);
-}
 
 .brd-whatsapp-tertiary {
-  border-color: var(--clr-whatsapp-tertiary-darker);
+  border-color: var(--clr-whatsapp-tertiary);
 }
 
 .bsh-whatsapp-tertiary {
-  box-shadow: var(--clr-whatsapp-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsapp-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-whatsappshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsappshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-whatsapp-tertiary-hover:hover {
-  box-shadow: var(--clr-whatsapp-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsapp-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-whatsappshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-whatsappshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-whatsapp-tertiary {
@@ -3394,12 +3396,10 @@ body {
 }
 
 .grd-whatsapp-tertiary {
-  background-image: linear-gradient(to top, var(--clr-whatsapp-tertiary-darker), var(--clr-whatsapp-tertiary), var(--clr-whatsapp-tertiary-lighter));
-  color: var(--clr-whatsapp-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-whatsapp-primary-darker), var(--clr-whatsapp-primary), var(--clr-whatsapp-primary-lighter));
 }
 
 .pal-whatsapp {
-  --clr-border: var(--clr-whatsapp-secondary-darker);
   --clr-primary: var(--clr-whatsapp-primary);
   --clr-primary-lighter: var(--clr-whatsapp-primary-lighter);
   --clr-primary-darker: var(--clr-whatsapp-primary-darker);
@@ -3412,25 +3412,26 @@ body {
   --clr-tertiary-lighter: var(--clr-whatsapp-tertiary-lighter);
   --clr-tertiary-darker: var(--clr-whatsapp-tertiary-darker);
   --clr-tertiary-text: var(--clr-whatsapp-tertiary-text);
+  --clr-border: var(--clr-whatsapp-border);
+  --clr-overlay: var(--clr-whatsapp-overlay);
+  --clr-shadow-primary: var(--clr-whatsapp-shadow-primary);
+  --clr-shadow-secondary: var(--clr-whatsapp-shadow-secondary);
 }
 
 .bkg-youtube-primary {
   background-color: var(--clr-youtube-primary);
   color: var(--clr-youtube-primary-text);
 }
-.bkg-youtube-primary.hlg-hover:hover {
-  background-color: var(--clr-youtube-primary-lighter);
-}
 
 .brd-youtube-primary {
-  border-color: var(--clr-youtube-primary-darker);
+  border-color: var(--clr-youtube-primary);
 }
 
 .bsh-youtube-primary {
-  box-shadow: var(--clr-youtube-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtube-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-youtubeshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtubeshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-youtube-primary-hover:hover {
-  box-shadow: var(--clr-youtube-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtube-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-youtubeshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtubeshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-youtube-primary {
@@ -3439,26 +3440,22 @@ body {
 
 .grd-youtube-primary {
   background-image: linear-gradient(to top, var(--clr-youtube-primary-darker), var(--clr-youtube-primary), var(--clr-youtube-primary-lighter));
-  color: var(--clr-youtube-primary-text);
 }
 
 .bkg-youtube-secondary {
   background-color: var(--clr-youtube-secondary);
   color: var(--clr-youtube-secondary-text);
 }
-.bkg-youtube-secondary.hlg-hover:hover {
-  background-color: var(--clr-youtube-secondary-lighter);
-}
 
 .brd-youtube-secondary {
-  border-color: var(--clr-youtube-secondary-darker);
+  border-color: var(--clr-youtube-secondary);
 }
 
 .bsh-youtube-secondary {
-  box-shadow: var(--clr-youtube-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtube-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-youtubeshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtubeshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-youtube-secondary-hover:hover {
-  box-shadow: var(--clr-youtube-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtube-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-youtubeshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtubeshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-youtube-secondary {
@@ -3466,27 +3463,23 @@ body {
 }
 
 .grd-youtube-secondary {
-  background-image: linear-gradient(to top, var(--clr-youtube-secondary-darker), var(--clr-youtube-secondary), var(--clr-youtube-secondary-lighter));
-  color: var(--clr-youtube-secondary-text);
+  background-image: linear-gradient(to top, var(--clr-youtube-primary-darker), var(--clr-youtube-primary), var(--clr-youtube-primary-lighter));
 }
 
 .bkg-youtube-tertiary {
   background-color: var(--clr-youtube-tertiary);
   color: var(--clr-youtube-tertiary-text);
 }
-.bkg-youtube-tertiary.hlg-hover:hover {
-  background-color: var(--clr-youtube-tertiary-lighter);
-}
 
 .brd-youtube-tertiary {
-  border-color: var(--clr-youtube-tertiary-darker);
+  border-color: var(--clr-youtube-tertiary);
 }
 
 .bsh-youtube-tertiary {
-  box-shadow: var(--clr-youtube-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtube-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-youtubeshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtubeshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 .bsh-youtube-tertiary-hover:hover {
-  box-shadow: var(--clr-youtube-shadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtube-shadow-secondary) 0 0.2rem 0.4rem -0.1rem;
+  box-shadow: var(--clr-youtubeshadow-primary) 0 0.4rem 0.6rem -0.1rem, var(--clr-youtubeshadow-secondary) 0 0.2rem 0.4rem -0.1rem;
 }
 
 .clr-youtube-tertiary {
@@ -3494,12 +3487,10 @@ body {
 }
 
 .grd-youtube-tertiary {
-  background-image: linear-gradient(to top, var(--clr-youtube-tertiary-darker), var(--clr-youtube-tertiary), var(--clr-youtube-tertiary-lighter));
-  color: var(--clr-youtube-tertiary-text);
+  background-image: linear-gradient(to top, var(--clr-youtube-primary-darker), var(--clr-youtube-primary), var(--clr-youtube-primary-lighter));
 }
 
 .pal-youtube {
-  --clr-border: var(--clr-youtube-secondary-darker);
   --clr-primary: var(--clr-youtube-primary);
   --clr-primary-lighter: var(--clr-youtube-primary-lighter);
   --clr-primary-darker: var(--clr-youtube-primary-darker);
@@ -3512,6 +3503,10 @@ body {
   --clr-tertiary-lighter: var(--clr-youtube-tertiary-lighter);
   --clr-tertiary-darker: var(--clr-youtube-tertiary-darker);
   --clr-tertiary-text: var(--clr-youtube-tertiary-text);
+  --clr-border: var(--clr-youtube-border);
+  --clr-overlay: var(--clr-youtube-overlay);
+  --clr-shadow-primary: var(--clr-youtube-shadow-primary);
+  --clr-shadow-secondary: var(--clr-youtube-shadow-secondary);
 }
 
 html {

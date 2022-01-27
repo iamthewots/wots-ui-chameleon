@@ -1,33 +1,40 @@
 @use "../functions";
-@use "../settings/variables";
+@use "../settings/defaults";
 @use "sass:map";
 @use "sass:meta";
 
 @mixin set-response-to($breakpoint, $screen-query: min-width) {
-    $width: 0px;
-    @if (meta.type-of($breakpoint) == string) {
-        $width: map.get(variables.$def-breakpoints, $breakpoint);
-    }
-    @if (meta.type-of($breakpoint) == number) {
+    $width: null;
+    @if (map.has-key(defaults.$BREAKPOINTS, $breakpoint)) {
+        $width: map.get(defaults.$BREAKPOINTS, $breakpoint);
+    } @else if (meta.type-of($breakpoint) == number) {
         $width: $breakpoint;
+    } @else {
+        @warn "No valid breakpoint provided, set-response-to not applied";
     }
 
-    @media screen and (#{$screen-query}: #{$width}) {
-        @content;
+    @if ($width != null) {
+        @media screen and (#{$screen-query}: #{$width}) {
+            @content;
+        }
     }
+}
+
+@mixin add-hover-modifier() {
 }
 
 @mixin add-responsive-modifiers() {
     @content;
-    @each $size in variables.$sizes {
-        @each $evaluation in after, before {
-            $screen-query: min-width;
-            @if ($evaluation == before) {
-                $screen-query: max-width;
+
+    @each $size in defaults.$SIZES {
+        @each $eval in after, before {
+            $query: min-width;
+            @if ($eval == before) {
+                $query: max-width;
             }
 
-            &-#{$evaluation}-#{$size} {
-                @include set-response-to($size, $screen-query) {
+            &-#{$eval}-#{$size} {
+                @include set-response-to($size, $query) {
                     @content;
                 }
             }
@@ -53,8 +60,7 @@
                 font-size: var(--responsive-fs-xl);
             }
         }
-    }
-    @if ($method == fluid) {
+    } @else if ($method == fluid) {
         html {
             font-size: max(10px, 0.666vw);
 

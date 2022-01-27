@@ -1,7 +1,6 @@
-@use "../functions/style";
 @use "../functions/theme";
+@use "../mixins/style";
 @use "../settings/defaults";
-@use "./style";
 @use "sass:color";
 @use "sass:map";
 @use "sass:meta";
@@ -27,40 +26,52 @@
         }
 
         --clr-#{$palette-name}-#{$shade}: #{$color};
-        --clr-#{$palette-name}-#{$shade}-lighter: #{$color}-lighter;
-        --clr-#{$palette-name}-#{$shade}-darker: #{$color}-darker;
-        --clr-#{$palette-name}-#{$shade}-text: #{$color}-text;
+        --clr-#{$palette-name}-#{$shade}-lighter: #{$delta-light};
+        --clr-#{$palette-name}-#{$shade}-darker: #{$delta-dark};
+        --clr-#{$palette-name}-#{$shade}-text: #{$text};
     }
 
     $overlay: color.change(
-        map.get($palette, defaults.$OVERLAY-SHADE),
+        map.get($palette-map, defaults.$OVERLAY-SHADE),
         $alpha: defaults.$OVERLAY-ALPHA
     );
-    $border: map.get($palette, defaults.$BORDER-SHADE);
+    $border: map.get($palette-map, defaults.$BORDER-SHADE);
     $shadow-primary: color.change(
-        map.get($palette, defaults.$SHADOW-SHADE),
+        map.get($palette-map, defaults.$SHADOW-SHADE),
         $alpha: defaults.$SHADOW-PRIMARY-ALPHA
     );
     $shadow-secondary: color.change(
-        map.get($palette, defaults.$SHADOW-SHADE),
+        map.get($palette-map, defaults.$SHADOW-SHADE),
         $alpha: defaults.$SHADOW-SECONDARY-ALPHA
     );
 
-    --clr-#{$palette-name}-border: $border;
-    --clr-#{$palette-name}-overlay: $overlay;
-    --clr-#{$palette-name}-shadow-primary: $shadow-primary;
-    --clr-#{$palette-name}-shadow-secondary: $shadow-secondary;
+    --clr-#{$palette-name}-border: #{$border};
+    --clr-#{$palette-name}-overlay: #{$overlay};
+    --clr-#{$palette-name}-shadow-primary: #{$shadow-primary};
+    --clr-#{$palette-name}-shadow-secondary: #{$shadow-secondary};
+}
+
+@mixin set-general-palette($palette) {
+    @each $shade in defaults.$SHADES {
+        --clr-#{$shade}: var(--clr-#{$palette}-#{$shade});
+        --clr-#{$shade}-lighter: var(--clr-#{$palette}-#{$shade}-lighter);
+        --clr-#{$shade}-darker: var(--clr-#{$palette}-#{$shade}-darker);
+        --clr-#{$shade}-text: var(--clr-#{$palette}-#{$shade}-text);
+    }
+    @each $id in border, overlay, shadow-primary, shadow-secondary {
+        --clr-#{$id}: var(--clr-#{$palette}-#{$id});
+    }
 }
 
 @mixin create-color-palette-classes($palette) {
     @each $shade in defaults.$SHADES {
         .bkg-#{$palette}-#{$shade} {
             background-color: var(--clr-#{$palette}-#{$shade});
-            color: var(--clr-#{$palette-name}-#{$shade}-text);
+            color: var(--clr-#{$palette}-#{$shade}-text);
         }
 
         .brd-#{$palette}-#{$shade} {
-            border-color: var(--clr-#{$palette}-#{$shade}-border);
+            border-color: var(--clr-#{$palette}-#{$shade});
         }
 
         .bsh-#{$palette}-#{$shade} {
@@ -81,14 +92,6 @@
     }
 
     .pal-#{$palette} {
-        @each $shade in defaults.$SHADES {
-            --clr-#{$shade}: var(--clr-#{$palette}-#{$shade});
-            --clr-#{$shade}-lighter: var(--clr-#{$palette}-#{$shade}-lighter);
-            --clr-#{$shade}-darker: var(--clr-#{$palette}-#{$shade}-darker);
-            --clr-#{$shade}-text: var(--clr-#{$palette}-#{$shade}-text);
-        }
-        @each $id in border, overlay, shadow-primary, shadow-secondary {
-            --clr-#{$id}: var(--clr-#{$palette}-#{$id});
-        }
+        @include set-general-palette($palette);
     }
 }

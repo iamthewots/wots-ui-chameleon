@@ -1,13 +1,13 @@
 @use "../src/main.scss";
 @use "../src/tools.scss";
 
-@include tools.create-palette-classes(facebook);
-@include tools.create-palette-classes(spotify);
-@include tools.create-palette-classes(instagram);
-@include tools.create-palette-classes(twitch);
-@include tools.create-palette-classes(twitter);
-@include tools.create-palette-classes(whatsapp);
-@include tools.create-palette-classes(youtube);
+@include tools.create-color-palette-classes(facebook);
+@include tools.create-color-palette-classes(spotify);
+@include tools.create-color-palette-classes(instagram);
+@include tools.create-color-palette-classes(twitch);
+@include tools.create-color-palette-classes(twitter);
+@include tools.create-color-palette-classes(whatsapp);
+@include tools.create-color-palette-classes(youtube);
 
 @include tools.use-responsive-design(fixed);
 

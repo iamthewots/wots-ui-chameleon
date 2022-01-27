@@ -1,4 +1,4 @@
-@use "../settings/variables";
+@use "../settings/defaults";
 @use "sass:math";
 @use "sass:string";
 
@@ -7,7 +7,7 @@
     .#{$prefix}-0 {
         #{$property}: 0;
     }
-    @each $size in variables.$sizes {
+    @each $size in defaults.$SIZES {
         $size-value: var(--space-#{$size});
 
         .#{$prefix}-#{$size} {
@@ -26,7 +26,7 @@
 
         @each $axis in x, y {
             .#{$prefix}#{$axis}-#{$size} {
-                @if $axis == x {
+                @if ($axis == x) {
                     @if ($property == gap) {
                         column-gap: $size-value;
                     } @else {
@@ -47,7 +47,7 @@
 }
 
 .asr {
-    @each $id, $aspect-ratio in variables.$def-aspect-ratios {
+    @each $id, $aspect-ratio in defaults.$ASPECT-RATIOS {
         &-#{$id} {
             @supports (aspect-ratio: #{$aspect-ratio}) {
                 aspect-ratio: $aspect-ratio;
@@ -103,7 +103,7 @@
 }
 
 .siz {
-    @each $size in variables.$sizes {
+    @each $size in defaults.$SIZES {
         $size-value: var(--size-#{$size});
 
         @each $axis in x, y {

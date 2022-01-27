@@ -1,0 +1,29 @@
+@use "../functions/style";
+@use "../settings/defaults";
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+
+@mixin set-vue-transition-hooks($keyframes-id, $duration, $fade) {
+    $animation-duration: style.parse-animation-duration($duration);
+
+    @if ($add-fade == true) {
+        &-enter-active {
+            animation: fade $animation-duration ease-out,
+                $keyframe $animation-duration ease-out;
+        }
+
+        &-leave-active {
+            animation: fade $animation-duration reverse ease-out,
+                $keyframe $animation-duration reverse ease-out;
+        }
+    } @else {
+        &-enter-active {
+            animation: $keyframe $animation-duration ease-out;
+        }
+
+        &-leave-active {
+            animation: $keyframe $animation-duration reverse ease-out;
+        }
+    }
+}

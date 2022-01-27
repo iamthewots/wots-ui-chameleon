@@ -1,4 +1,4 @@
-@use "../settings/variables";
+@use "../settings/defaults";
 
 .ff {
     @each $family in banner, input, main, title {
@@ -9,7 +9,7 @@
 }
 
 .fs {
-    @each $size in variables.$sizes {
+    @each $size in defaults.$SIZES {
         &-#{$size} {
             font-size: var(--fs-#{$size});
         }

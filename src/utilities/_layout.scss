@@ -1,7 +1,7 @@
 @use "../functions/calc";
-@use "../settings/variables";
+@use "../settings/defaults";
 
-@each $size in variables.$sizes {
+@each $size in defaults.$SIZES {
     $width: var(--size-#{$size});
 
     @each $method in fit, fill {
@@ -33,8 +33,11 @@
 @each $alignement in top, center, bottom {
     @each $justification in left, center, right {
         @each $display in flex, grid {
-            $alignement-value: calc.get-alignement($alignement, $display);
-            $justification-value: calc.get-alignement($justification, $display);
+            $alignement-value: calc.get-alignement-value($alignement, $display);
+            $justification-value: calc.get-alignement-value(
+                $justification,
+                $display
+            );
             $prefix: flx;
             @if ($display == grid) {
                 $prefix: grd;
@@ -57,17 +60,23 @@
 @each $target in content, items, self {
     @each $alignement in top, center, bottom {
         .ali-#{$target}-#{$alignement} {
-            align-#{$target}: calc.get-alignement($alignement, flex) !important;
-            align-#{$target}: calc.get-alignement($alignement, grid) !important;
+            align-#{$target}: calc.get-alignement-value(
+                $alignement,
+                flex
+            ) !important;
+            align-#{$target}: calc.get-alignement-value(
+                $alignement,
+                grid
+            ) !important;
         }
     }
     @each $justification in left, center, right {
         .jst-#{$target}-#{$justification} {
-            justify-#{$target}: calc.get-alignement(
+            justify-#{$target}: calc.get-alignement-value(
                 $justification,
                 flex
             ) !important;
-            justify-#{$target}: calc.get-alignement(
+            justify-#{$target}: calc.get-alignement-value(
                 $justification,
                 grid
             ) !important;
@@ -142,7 +151,7 @@
         &-#{$coordinate} {
             #{$coordinate}: 0;
 
-            @each $size in variables.$sizes {
+            @each $size in defaults.$SIZES {
                 &-#{$size} {
                     #{$coordinate}: var(--space-#{$size});
                 }
@@ -217,7 +226,7 @@
 }
 
 .lay-spread {
-    @each $size in variables.$sizes {
+    @each $size in defaults.$SIZES {
         $margin-value: var(--space-#{$size});
         @each $axis in x, y {
             &-#{$axis}-#{$size} > *:not(:last-child) {

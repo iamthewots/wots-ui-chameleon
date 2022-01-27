@@ -1,6 +1,6 @@
 @use "../functions/calc";
 
-$ANIMATION-DURATION: var(--duration-2);
+$ANIMATION-DURATION: sm;
 $ANIMATION-TIMING-FUNCTION: ease-out;
 $ASPECT-RATIOS: (
     "1x1": 1,
@@ -21,9 +21,10 @@ $BREAKPOINTS: (
     xl: calc.get-em-from-px(3600px),
 );
 $OVERLAY-ALPHA: 0.75;
-$OVELRAY-SHADE: secondary;
+$OVERLAY-SHADE: secondary;
 $SHADES: primary, secondary, tertiary;
 $SHADES-DELTA: 15%;
+$SHADOW-SHADE: primary;
 $SHADOW-PRIMARY-ALPHA: 0.1;
 $SHADOW-SECONDARY-ALPHA: 0.1;
 $SHADOW-PRIMARY-SETTINGS: 0 0.4rem 0.6rem -0.1rem;

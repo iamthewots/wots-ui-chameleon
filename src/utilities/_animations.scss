@@ -1,0 +1,25 @@
+@use "../mixins/style";
+@use "../settings/animations";
+@use "../settings/defaults";
+
+.ani {
+    @each $animation, $settings in animations.$animations {
+        &-#{$animation} {
+            @include style.animation($animation);
+        }
+    }
+
+    @each $size in defaults.$SIZES {
+        &-duration-#{$size} {
+            animation-duration: var(--duration-#{$size});
+        }
+    }
+
+    &-alternate {
+        animation-direction: alternate;
+    }
+    
+    &-infinite {
+        animation-iteration-count: infinite;
+    }
+}

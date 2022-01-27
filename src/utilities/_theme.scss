@@ -1,8 +1,8 @@
-@use "../functions/theme";
-@use "../settings/variables";
+@use "../mixins/style";
+@use "../settings/defaults";
 @use "sass:string";
 
-@each $shade in primary, secondary, tertiary {
+@each $shade in defaults.$SHADES {
     .bkg-#{$shade} {
         background-color: var(--clr-#{$shade}) !important;
         color: var(--clr-#{$shade}-text) !important;
@@ -14,8 +14,9 @@
 }
 
 :where(.box) {
-    transition: all var(--duration-#{variables.$def-animation-duration}) ease;
-    border: theme.get-border();
+    @include style.border();
+    transition: all var(--duration-#{defaults.$ANIMATION-DURATION})
+        defaults.$ANIMATION-TIMING-FUNCTION;
     border-radius: var(--border-radius);
     padding: var(--space-sm);
     background-color: var(--clr-primary);
@@ -23,7 +24,7 @@
 }
 
 .brd {
-    border: theme.get-border();
+    @include style.border();
 
     &-none {
         border: none;
@@ -39,24 +40,23 @@
 
     @each $coordinate in left, right, top, bottom {
         &-#{$coordinate} {
-            border-#{$coordinate}: theme.get-border();
+            @include style.border(null, $coordinate);
         }
     }
 }
 
 .bsh {
-    box-shadow: theme.get-box-shadow();
+    @include style.box-shadow();
 
     &-hover:hover {
-        box-shadow: theme.get-box-shadow();
+        @include style.box-shadow();
     }
 }
 
 .grd {
-    @each $shade in primary, secondary, tertiary {
+    @each $shade in defaults.$SHADES {
         &-#{$shade} {
-            background-image: theme.get-linear-gradient($shade);
-            color: var(--clr-#{$shade}-text);
+            @include style.gradient();
         }
     }
 }

@@ -1,7 +1,25 @@
+@use "../mixins/theme";
+@use "../settings/defaults";
+@use "./palettes";
+
 :root {
     --clr-body: hsl(200, 10%, 98%);
+    --clr-text: hsl(0, 0%, 5%);
     --clr-text-light: hsl(0, 0%, 95%);
     --clr-text-dark: hsl(0, 0%, 5%);
+
+    @include theme.set-color-palette(
+        main,
+        (
+            primary: hsl(0, 0%, 100%),
+            secondary: hsl(0, 0%, 90%),
+            tertiary: hsl(200, 100%, 50%),
+        )
+    );
+}
+
+:root {
+    @include theme.set-general-palette(main);
 }
 
 @each $palette, $palette-map in palettes.$common-networks {
