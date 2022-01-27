@@ -1,0 +1,31 @@
+@use "../functions/calc";
+
+$ANIMATION-DURATION: var(--duration-2);
+$ANIMATION-TIMING-FUNCTION: ease-out;
+$ASPECT-RATIOS: (
+    "1x1": 1,
+    "3x2": 1.5,
+    "4x3": 1.333333333,
+    "16x9": 1.777777778,
+    "18x9": 2,
+    "21x9": 2.333333333,
+);
+$BORDER-SHADE: secondary;
+$BORDER-STYLE: solid;
+$BORDER-WIDTH: 0.1rem;
+$BREAKPOINTS: (
+    xs: calc.get-em-from-px(300px),
+    sm: calc.get-em-from-px(600px),
+    md: calc.get-em-from-px(1200px),
+    lg: calc.get-em-from-px(2100px),
+    xl: calc.get-em-from-px(3600px),
+);
+$OVERLAY-ALPHA: 0.75;
+$OVELRAY-SHADE: secondary;
+$SHADES: primary, secondary, tertiary;
+$SHADES-DELTA: 15%;
+$SHADOW-PRIMARY-ALPHA: 0.1;
+$SHADOW-SECONDARY-ALPHA: 0.1;
+$SHADOW-PRIMARY-SETTINGS: 0 0.4rem 0.6rem -0.1rem;
+$SHADOW-SECONDARY-SETTINGS: 0 0.2rem 0.4rem -0.1rem;
+$SIZES: xs, sm, md, lg, xl;

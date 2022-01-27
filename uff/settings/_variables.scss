@@ -1,5 +1,35 @@
 @use "../functions/calc";
 
+$sizes: xs, sm, md, lg, xl;
+
+$DEF-ANIMATION-DURATION: 2;
+$DEF-ANIMATION-TIMING-FUNCTION: ease-out;
+$DEF-ASPECT-RATIOS: (
+    "1x1": 1,
+    "3x2": 1.5,
+    "4x3": 1.333333333,
+    "16x9": 1.777777778,
+    "18x9": 2,
+    "21x9": 2.333333333,
+);
+$DEF-BORDER-SHADE: secondary-darker;
+$DEF-BORDER-SETTINGS: 0.1rem solid;
+$DEF-BREAKPOINTS: (
+    xs: calc.get-em-from-px(300px),
+    sm: calc.get-em-from-px(600px),
+    md: calc.get-em-from-px(1200px),
+    lg: calc.get-em-from-px(2100px),
+    xl: calc.get-em-from-px(3600px),
+);
+$DEF-OVERLAY-ALPHA: 0.75;
+$DEF-OVERLAY-SHADE: secondary;
+$DEF-SHADE-DELTA: 10%;
+$DEF-SHADOW-PRIMARY-ALPHA: 0.1;
+$DEF-SHADOW-PRIMARY-SETTINGS: 0 0.4rem 0.6rem -0.1rem;
+$DEF-SHADOW-SECONDARY-ALPHA: 0.05;
+$DEF-SHADOW-SECONDARY-SETTINGS: 0 0.2rem 0.4rem -0.1rem;
+$DEF-SHADOW-SHADE: primary;
+
 :root {
     --border-radius: 0.5rem;
 

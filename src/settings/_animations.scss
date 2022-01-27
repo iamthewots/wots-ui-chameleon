@@ -1,34 +1,35 @@
-@use "./variables";
+@use "./defaults";
 @use "sass:map";
 
-$animations-map: ();
+$animations: ();
 
 // draw
 @each $direction in left, right, up, down {
-    $transform-axis: X;
+    $axis: X;
     $distance: -100%;
     @if ($direction == up or $direction == down) {
-        $transform-axis: Y;
+        $axis: Y;
     }
     @if ($direction == left or $direction == up) {
-        $value: 100%;
+        $distance: 100%;
     }
-    $keyframe-name: draw-#{$direction};
-    @keyframes #{$keyframe-name} {
+
+    $keyframes-id: draw-#{$direction};
+
+    @keyframes #{$keyframes-id} {
         from {
-            transform: translate#{$transform-axis }(#{$distance});
+            transorm: translate#{$axis }(#{$distance});
         }
         to {
-            transform: translate#{$transform-axis }(0);
+            transorm: translate#{$axis }(0);
         }
     }
 
-    // ani-draw
-    $animations-map: map.set(
-        $animations-map,
-        $keyframe-name,
+    $animations: map.set(
+        $animations,
+        $keyframes-id,
         (
-            keyframes: $keyframe-name,
+            keyframes: $keyframes-id,
             timing-function: ease-out,
         )
     );
@@ -44,104 +45,54 @@ $animations-map: ();
     }
 }
 
-// ani-fade
-$animations-map: map.set(
-    $animations-map,
+$animations: map.set(
+    $animations,
     fade,
     (
         keyframes: fade,
         timing-function: ease-out,
     )
 );
-// ani-blink
-$animations-map: map.set(
-    $animations-map,
+$animations: map.set(
+    $animations,
     blink,
     (
         keyframes: fade,
         iteration-count: infinite,
         timing-function: steps(2, jump-none),
-
     )
 );
 
 // slide
 @each $direction in left, right, up, down {
-    @each $size in variables.$sizes {
+    @each $size in defaults.$sizes {
+        $axis: X;
         $distance: var(--distance-#{$size});
-        @if ($direction == right or $direction == down) {
-            $value: calc(var(--distance-#{$size}) * -1);
-        }
-        $transform-axis: X;
         @if ($direction == up or $direction == down) {
-            $transform-axis: Y;
+            $axis: Y;
         }
-        $keyframe-name: slide-#{$direction}-#{$size};
-        @keyframes #{$keyframe-name} {
+        @if ($direction == right or $direction == down) {
+            $distance: calc(#{$distance} * -1);
+        }
+
+        $keyframes-id: slide-#{$direction}-#{$size};
+        @keyframes #{$keyframes-id} {
             from {
-                transform: translate#{$transform-axis }($distance);
+                transform: translate#{$axis }(#{$distance});
             }
             to {
-                transform: translate#{$transform-axis }(0);
+                transform: translate#{$axis }(0);
             }
         }
 
-        // ani-slide
-        $animations-map: map.set(
-            $animations-map,
-            $keyframe-name,
+        $animations: map.set(
+            $animations,
+            $keyframes-id,
             (
-                keyframes: $keyframe-name,
+                keyframes: $keyframes-id,
                 timing-function: ease-out,
             )
         );
     }
 }
 
-// zoom in
-@each $size in variables.$sizes {
-    $zoom-value: calc(100% - var(--distance-#{$size}));
-    $keyframe-name: zoom-in-#{$size};
-    @keyframes #{$keyframe-name} {
-        from {
-            transform: scale(#{$zoom-value});
-        }
-        to {
-            transform: scale(1);
-        }
-    }
-
-    // ani-zoom-in
-    $animations-map: map.set(
-        $animations-map,
-        $keyframe-name,
-        (
-            keyframes: $keyframe-name,
-            timing-function: ease-out,
-        )
-    );
-}
-
-// zoom out
-@each $size in variables.$sizes {
-    $zoom-value: calc(100% + var(--distance-#{$size}));
-    $keyframe-name: zoom-out-#{$size};
-    @keyframes #{$keyframe-name} {
-        from {
-            transform: scale(#{$zoom-value});
-        }
-        to {
-            transform: scale(1);
-        }
-    }
-
-    // ani-zoom-out
-    $animations-map: map.set(
-        $animations-map,
-        $keyframe-name,
-        (
-            keyframes: $keyframe-name,
-            timing-function: ease-out,
-        )
-    );
-}

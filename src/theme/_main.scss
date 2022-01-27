@@ -1,0 +1,11 @@
+:root {
+    --clr-body: hsl(200, 10%, 98%);
+    --clr-text-light: hsl(0, 0%, 95%);
+    --clr-text-dark: hsl(0, 0%, 5%);
+}
+
+@each $palette, $palette-map in palettes.$common-networks {
+    :root {
+        @include theme.set-color-palette($palette, $palette-map);
+    }
+}

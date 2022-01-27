@@ -1,0 +1,60 @@
+@use "../functions/theme";
+@use "../settings/defaults";
+@use "sass:color";
+@use "sass:meta";
+
+@mixin box-shadow($color: null) {
+    $shadow-primary: var(--clr-shadow-primary);
+    $shadow-secondary: var(--clr-shadow-secondary);
+    @if (meta.type-of($color) == color) {
+        $shadow-primary: color.change(
+            $color,
+            $alpha: defaults.$SHADOW-PRIMARY-ALPHA
+        );
+        $shadow-secondary: color.change(
+            $color,
+            $alpha: defaults.$SHADOW-SECONDARY-ALPHA
+        );
+    } @else if (meta.type-of($color) == string) {
+        $shadow-primary: var(--clr-#{$color}shadow-primary);
+        $shadow-secondary: var(--clr-#{$color}shadow-secondary);
+    }
+
+    box-shadow: $shadow-primary defaults.$SHADOW-PRIMARY-SETTINGS,
+        $shadow-secondary defaults.$SHADOW-SECONDARY-SETTINGS;
+}
+
+@mixin border($color: null) {
+    $border-color: var(--clr-border);
+    @if (meta.type-of($color) == color) {
+        $border-color: $color;
+    } @else if (meta.type-of($color) == string) {
+        $border-color: var(--clr-#{$color}-border);
+    }
+
+    border-color: $border-color;
+    border-style: defaults.$BORDER-STYLE;
+    border-width: defaults.$BORDER-WIDTH;
+}
+
+@mixin gradient($color: null, $style: linear, $direction: to top) {
+    $step-1: var(--clr-main-primary);
+    $step-2: var(--clr-main-secondary);
+    $step-3: var(--clr-main-tertiary);
+
+    @if (meta.type-of($color) == color) {
+        $step-1: color.change($color, $lightness: defaults.$SHADES-DELTA * -1);
+        $step-2: $color;
+        $step-3: color.change($color, $lightness: defaults.$SHADES-DELTA);
+    } @else if (meta.type-of($color) == string) {
+        $id: #{$color}-primary;
+        @if (theme.string-contains-shade-name($color)) {
+            $id: $color;
+        }
+        $step-1: var(--clr-#{$id}-darker);
+        $step-2: var(--clr-#{$id});
+        $step-3: var(--clr-#{$id}-lighter);
+    }
+
+    background-image: #{$style}-gradient(#{$direction}, $step-1, $step-2, $step-3);
+}

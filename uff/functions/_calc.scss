@@ -13,7 +13,7 @@
     @return math.div($n, 16) * 1em;
 }
 
-@function get-alignement-value($coordinate, $display-value) {
+@function get-alignement($coordinate, $display-value) {
     $value-prefix: "";
     @if ($display-value == flex) {
         $value-prefix: flex-;

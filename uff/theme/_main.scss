@@ -3,6 +3,8 @@
 
 :root {
     --clr-body: hsl(200, 10%, 98%);
+    
+    // fallback values
     --clr-main-primary: hsl(0, 0%, 100%);
     --clr-main-primary-lighter: hsl(0, 0%, 100%);
     --clr-main-primary-darker: hsl(0, 0%, 96%);
@@ -16,6 +18,7 @@
     --clr-main-tertiary-darker: hsl(200, 100%, 40%);
     --clr-main-tertiary-text: var(--clr-text-light);
 
+    // dynamic values
     @each $shade in primary, secondary, tertiary {
         --clr-#{$shade}: var(--clr-main-#{$shade});
         --clr-#{$shade}-lighter: var(--clr-main-#{$shade});

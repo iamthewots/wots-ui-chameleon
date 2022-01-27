@@ -45,3 +45,6 @@
     --clr-#{$palette-name}-shadow-primary: #{$color-shadow-primary};
     --clr-#{$palette-name}-shadow-secondary: #{$color-shadow-secondary};
 }
+
+@mixin create-color-palette-classes($palette-name) {
+}
