@@ -31,6 +31,31 @@
     }
 }
 
+@function parse-palette-settings($settings) {
+    @if (meta.type-of($settings) != map) {
+        @error "Invalid settings provided, it should be a sass map";
+    }
+
+    $default-settings: (
+        border-shade: defaults.$BORDER-SHADE,
+        overlay-shade: defaults.$OVERLAY-SHADE,
+        shades-delta: defaults.$SHADES-DELTA,
+        shadow-shade: defaults.$SHADOW-SHADE,
+    );
+    $parsed-settings: ();
+
+    @each $key, $value in $default-settings {
+        $parsed-value: $value;
+        @if (map.has-key($settings, $key)) {
+            $parsed-value: map.get($settings, $key);
+        }
+
+        $parsed-settings: map.set($parsed-settings, $key, $parsed-value);
+    }
+
+    @return $parsed-settings;
+}
+
 @function string-contains-shade-name($string) {
     @each $shade in defaults.$SHADES {
         @if (string.index($string, $shade)) {

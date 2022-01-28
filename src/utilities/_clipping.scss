@@ -2,6 +2,10 @@
     overflow: auto;
 
     @each $overflow in auto, hidden, scroll {
+        &-#{$overflow} {
+            overflow: $overflow;
+        }
+
         @each $axis in x, y {
             &-#{$axis} {
                 overflow-#{$axis}: $overflow;

@@ -1,4 +1,5 @@
 @use "../functions/theme";
+@use "../mixins/responsive";
 @use "../mixins/style";
 @use "../settings/defaults";
 @use "sass:color";
@@ -9,6 +10,7 @@
     @if (meta.type-of($palette-map) != map) {
         @error "Palette-map must be a sass map";
     }
+    $settings: theme.parse-palette-settings($palette-map);
     @each $shade in defaults.$SHADES {
         $color: map.get($palette-map, $shade);
         @if (meta.type-of($color) != color) {
@@ -36,14 +38,41 @@
         $alpha: defaults.$OVERLAY-ALPHA
     );
     $border: map.get($palette-map, defaults.$BORDER-SHADE);
+    @if (theme.is-color-dark($border)) {
+        $border: color.scale($border, $lightness: defaults.$SHADES-DELTA);
+    } @else {
+        $border: color.scale($border, $lightness: defaults.$SHADES-DELTA * -1);
+    }
     $shadow-primary: color.change(
         map.get($palette-map, defaults.$SHADOW-SHADE),
         $alpha: defaults.$SHADOW-PRIMARY-ALPHA
     );
+    @if (theme.is-color-dark($shadow-primary)) {
+        $shadow-primary: color.scale(
+            $shadow-primary,
+            $lightness: defaults.$SHADES-DELTA
+        );
+    } @else {
+        $shadow-primary: color.scale(
+            $shadow-primary,
+            $lightness: defaults.$SHADES-DELTA * -1
+        );
+    }
     $shadow-secondary: color.change(
         map.get($palette-map, defaults.$SHADOW-SHADE),
         $alpha: defaults.$SHADOW-SECONDARY-ALPHA
     );
+    @if (theme.is-color-dark($shadow-secondary)) {
+        $shadow-secondary: color.scale(
+            $shadow-secondary,
+            $lightness: defaults.$SHADES-DELTA
+        );
+    } @else {
+        $shadow-secondary: color.scale(
+            $shadow-secondary,
+            $lightness: defaults.$SHADES-DELTA * -1
+        );
+    }
 
     --clr-#{$palette-name}-border: #{$border};
     --clr-#{$palette-name}-overlay: #{$overlay};
@@ -63,34 +92,44 @@
     }
 }
 
-@mixin create-color-palette-classes($palette) {
+@mixin create-color-helper-classes($palette: null) {
+    $id: "";
+    @if ($palette != null) {
+        $id: -#{$palette};
+    }
+
     @each $shade in defaults.$SHADES {
-        .bkg-#{$palette}-#{$shade} {
-            background-color: var(--clr-#{$palette}-#{$shade});
-            color: var(--clr-#{$palette}-#{$shade}-text);
+        .bkg#{$id}-#{$shade} {
+            background-color: var(--clr#{$id}-#{$shade});
+            color: var(--clr#{$id}-#{$shade}-text);
         }
 
-        .brd-#{$palette}-#{$shade} {
-            border-color: var(--clr-#{$palette}-#{$shade});
+        .brd#{$id}-#{$shade} {
+            border-color: var(--clr#{$id}-#{$shade});
         }
 
-        .bsh-#{$palette}-#{$shade} {
-            @include style.box-shadow($palette);
-
-            &-hover:hover {
-                @include style.box-shadow($palette);
-            }
+        .clr#{$id}-#{$shade} {
+            color: var(--clr#{$id}-#{$shade});
         }
 
-        .clr-#{$palette}-#{$shade} {
-            color: var(--clr-#{$palette}-#{$shade});
-        }
-
-        .grd-#{$palette}-#{$shade} {
-            @include style.gradient($palette, linear);
+        .grd#{$id}-#{$shade} {
+            @include style.gradient(#{$palette}-#{$shade}, linear);
         }
     }
 
+    .bsh#{$id} {
+        @include style.box-shadow($palette);
+
+        &-hover:hover {
+            @include responsive.set-response-to-mouse() {
+                @include style.box-shadow($palette);
+            }
+        }
+    }
+}
+
+@mixin create-color-palette-classes($palette) {
+    @include create-color-helper-classes($palette);
     .pal-#{$palette} {
         @include set-general-palette($palette);
     }

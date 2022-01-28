@@ -45,8 +45,8 @@
             $alpha: defaults.$SHADOW-SECONDARY-ALPHA
         );
     } @else if (meta.type-of($color) == string) {
-        $shadow-primary: var(--clr-#{$color}shadow-primary);
-        $shadow-secondary: var(--clr-#{$color}shadow-secondary);
+        $shadow-primary: var(--clr-#{$color}-shadow-primary);
+        $shadow-secondary: var(--clr-#{$color}-shadow-secondary);
     }
 
     box-shadow: $shadow-primary defaults.$SHADOW-PRIMARY-SETTINGS,

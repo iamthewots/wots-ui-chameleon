@@ -12,7 +12,7 @@ $ASPECT-RATIOS: (
 );
 $BORDER-SHADE: secondary;
 $BORDER-STYLE: solid;
-$BORDER-WIDTH: 0.1rem;
+$BORDER-WIDTH: 1px;
 $BREAKPOINTS: (
     xs: calc.get-em-from-px(300px),
     sm: calc.get-em-from-px(600px),
@@ -24,9 +24,9 @@ $OVERLAY-ALPHA: 0.75;
 $OVERLAY-SHADE: secondary;
 $SHADES: primary, secondary, tertiary;
 $SHADES-DELTA: 15%;
-$SHADOW-SHADE: primary;
-$SHADOW-PRIMARY-ALPHA: 0.1;
-$SHADOW-SECONDARY-ALPHA: 0.1;
-$SHADOW-PRIMARY-SETTINGS: 0 0.4rem 0.6rem -0.1rem;
-$SHADOW-SECONDARY-SETTINGS: 0 0.2rem 0.4rem -0.1rem;
+$SHADOW-SHADE: secondary;
+$SHADOW-PRIMARY-ALPHA: 0.2;
+$SHADOW-SECONDARY-ALPHA: 0.4;
+$SHADOW-PRIMARY-SETTINGS: 0.05rem 0.05rem 0.05rem 0.15rem;
+$SHADOW-SECONDARY-SETTINGS: 0.1rem 0.1rem 0.1rem 0.2rem;
 $SIZES: xs, sm, md, lg, xl;

@@ -20,6 +20,18 @@
     }
 }
 
+@mixin set-response-to-mouse() {
+    @media (pointer: fine) {
+        @content;
+    }
+}
+
+@mixin set-response-to-touch() {
+    @media (hover: none) {
+        @content;
+    }
+}
+
 @mixin add-hover-modifier() {
 }
 

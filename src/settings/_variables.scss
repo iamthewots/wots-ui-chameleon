@@ -1,7 +1,7 @@
 @use "../functions/calc";
 
 :root {
-    --border-radius: 0.5rem;
+    --border-radius: max(5px, 0.5rem);
 
     --distance-xs: 10%;
     --distance-sm: 20%;
