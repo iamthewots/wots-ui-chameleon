@@ -10,20 +10,20 @@
     @if ($add-fade == true) {
         &-enter-active {
             animation: fade $animation-duration ease-out,
-                $keyframe $animation-duration ease-out;
+                $keyframes-id $animation-duration ease-out;
         }
 
         &-leave-active {
             animation: fade $animation-duration reverse ease-out,
-                $keyframe $animation-duration reverse ease-out;
+                $keyframes-id $animation-duration reverse ease-out;
         }
     } @else {
         &-enter-active {
-            animation: $keyframe $animation-duration ease-out;
+            animation: $keyframes-id $animation-duration ease-out;
         }
 
         &-leave-active {
-            animation: $keyframe $animation-duration reverse ease-out;
+            animation: $keyframes-id $animation-duration reverse ease-out;
         }
     }
 }
