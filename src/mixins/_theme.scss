@@ -10,18 +10,21 @@
     @if (meta.type-of($palette-map) != map) {
         @error "Palette-map must be a sass map";
     }
+
     $settings: theme.parse-palette-settings($palette-map);
+    $border-shade: map.get($settings, "border-shade");
+    $overlay-shade: map.get($settings, "overlay-shade");
+    $shades-delta: map.get($settings, "shades-delta");
+    $shadow-shade: map.get($settings, "shadow-shade");
+
     @each $shade in defaults.$SHADES {
         $color: map.get($palette-map, $shade);
         @if (meta.type-of($color) != color) {
             @error "Invalid color provided:" $color;
         }
 
-        $delta-light: color.scale($color, $lightness: defaults.$SHADES-DELTA);
-        $delta-dark: color.scale(
-            $color,
-            $lightness: defaults.$SHADES-DELTA * -1
-        );
+        $delta-light: color.scale($color, $lightness: $shades-delta);
+        $delta-dark: color.scale($color, $lightness: $shades-delta * -1);
         $text: var(--clr-text-dark);
         @if (theme.is-color-dark($color) == true) {
             $text: var(--clr-text-light);
@@ -34,43 +37,43 @@
     }
 
     $overlay: color.change(
-        map.get($palette-map, defaults.$OVERLAY-SHADE),
+        map.get($palette-map, $overlay-shade),
         $alpha: defaults.$OVERLAY-ALPHA
     );
-    $border: map.get($palette-map, defaults.$BORDER-SHADE);
+    $border: map.get($palette-map, $border-shade);
     @if (theme.is-color-dark($border)) {
-        $border: color.scale($border, $lightness: defaults.$SHADES-DELTA);
+        $border: color.scale($border, $lightness: $shades-delta);
     } @else {
-        $border: color.scale($border, $lightness: defaults.$SHADES-DELTA * -1);
+        $border: color.scale($border, $lightness: $shades-delta * -1);
     }
     $shadow-primary: color.change(
-        map.get($palette-map, defaults.$SHADOW-SHADE),
+        map.get($palette-map, $shadow-shade),
         $alpha: defaults.$SHADOW-PRIMARY-ALPHA
     );
     @if (theme.is-color-dark($shadow-primary)) {
         $shadow-primary: color.scale(
             $shadow-primary,
-            $lightness: defaults.$SHADES-DELTA
+            $lightness: $shades-delta
         );
     } @else {
         $shadow-primary: color.scale(
             $shadow-primary,
-            $lightness: defaults.$SHADES-DELTA * -1
+            $lightness: $shades-delta * -1
         );
     }
     $shadow-secondary: color.change(
-        map.get($palette-map, defaults.$SHADOW-SHADE),
+        map.get($palette-map, $shadow-shade),
         $alpha: defaults.$SHADOW-SECONDARY-ALPHA
     );
     @if (theme.is-color-dark($shadow-secondary)) {
         $shadow-secondary: color.scale(
             $shadow-secondary,
-            $lightness: defaults.$SHADES-DELTA
+            $lightness: $shades-delta
         );
     } @else {
         $shadow-secondary: color.scale(
             $shadow-secondary,
-            $lightness: defaults.$SHADES-DELTA * -1
+            $lightness: $shades-delta * -1
         );
     }
 
@@ -102,6 +105,12 @@
         .bkg#{$id}-#{$shade} {
             background-color: var(--clr#{$id}-#{$shade});
             color: var(--clr#{$id}-#{$shade}-text);
+
+            &.hlg-hover:hover {
+                @include responsive.set-response-to-mouse() {
+                    background-color: var(--clr#{$id}-#{$shade}-lighter);
+                }
+            }
         }
 
         .brd#{$id}-#{$shade} {
@@ -132,5 +141,11 @@
     @include create-color-helper-classes($palette);
     .pal-#{$palette} {
         @include set-general-palette($palette);
+
+        &.hlg-hover:hover {
+            @include responsive.set-response-to-mouse() {
+                background-color: var(--clr-#{$palette}-primary-lighter);
+            }
+        }
     }
 }

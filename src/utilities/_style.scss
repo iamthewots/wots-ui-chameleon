@@ -1,0 +1,11 @@
+.crs {
+    @each $cursor in default, grab, not-allowed, pointer, wait {
+        &-#{$cursor} {
+            cursor: $cursor;
+        }
+    }
+}
+
+.dsb-user-select {
+    user-select: none;
+}

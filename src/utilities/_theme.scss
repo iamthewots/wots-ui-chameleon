@@ -15,37 +15,3 @@
     background-color: var(--clr-primary);
     color: var(--clr-primary-text);
 }
-
-.brd {
-    @include style.border();
-
-    &-none {
-        border: none;
-    }
-
-    &-round {
-        border-radius: var(--border-radius);
-
-        @each $direction in left, right, top, bottom {
-            &-#{$direction} {
-                @if ($direction == left or $direction == right) {
-                    border-top-#{$direction}-radius: var(--border-radius);
-                    border-bottom-#{$direction}-radius: var(--border-radius);
-                } @else {
-                    border-#{$direction}-left-radius: var(--border-radius);
-                    border-#{$direction}-right-radius: var(--border-radius);
-                }
-            }
-        }
-    }
-
-    &-square {
-        border-radius: 0;
-    }
-
-    @each $coordinate in left, right, top, bottom {
-        &-#{$coordinate} {
-            @include style.border(null, $coordinate);
-        }
-    }
-}

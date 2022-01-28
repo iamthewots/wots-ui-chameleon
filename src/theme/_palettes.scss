@@ -18,6 +18,9 @@ $common-networks: (
         primary: hsl(141, 73%, 42%),
         secondary: hsl(0, 11%, 9%),
         tertiary: hsl(0, 0%, 100%),
+        settings: (
+            shadow-shade: primary
+        )
     ),
     "tiktok": (
         primary: hsl(184, 52%, 61%),
