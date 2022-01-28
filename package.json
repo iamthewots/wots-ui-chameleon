@@ -1,8 +1,12 @@
 {
     "name": "wots-ui-chameleon",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Sass framework for Wots UI",
-    "main": "main.scss",
+    "main": "./src/main.scss",
+    "files": [
+        "dist/*",
+        "src/*"
+    ],
     "scripts": {
         "build": "sass src/main.scss dist/main.css && sass test/style.scss test/style.css",
         "serve": "serve test/"
