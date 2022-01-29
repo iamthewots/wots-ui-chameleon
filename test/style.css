@@ -1,33 +1,33 @@
 @keyframes draw-left {
   from {
-    transorm: translateX(100%);
+    transform: translateX(100%);
   }
   to {
-    transorm: translateX(0);
+    transform: translateX(0);
   }
 }
 @keyframes draw-right {
   from {
-    transorm: translateX(-100%);
+    transform: translateX(-100%);
   }
   to {
-    transorm: translateX(0);
+    transform: translateX(0);
   }
 }
 @keyframes draw-up {
   from {
-    transorm: translateY(100%);
+    transform: translateY(100%);
   }
   to {
-    transorm: translateY(0);
+    transform: translateY(0);
   }
 }
 @keyframes draw-down {
   from {
-    transorm: translateY(-100%);
+    transform: translateY(-100%);
   }
   to {
-    transorm: translateY(0);
+    transform: translateY(0);
   }
 }
 @keyframes fade {

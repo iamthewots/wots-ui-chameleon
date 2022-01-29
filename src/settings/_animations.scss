@@ -18,10 +18,10 @@ $animations: ();
 
     @keyframes #{$keyframes-id} {
         from {
-            transorm: translate#{$axis }(#{$distance});
+            transform: translate#{$axis }(#{$distance});
         }
         to {
-            transorm: translate#{$axis }(0);
+            transform: translate#{$axis }(0);
         }
     }
 
