@@ -6,13 +6,13 @@
 @each $property in gap, margin, padding {
     $prefix: string.slice($property, 1, 1);
     .#{$prefix}-0 {
-        #{$property}: 0;
+        #{$property}: 0 !important;
     }
     @each $size in defaults.$SIZES {
         $size-value: var(--space-#{$size});
 
         .#{$prefix}-#{$size} {
-            #{$property}: $size-value;
+            #{$property}: $size-value !important;
         }
 
         @if ($property != gap) {
@@ -20,7 +20,7 @@
                 $suffix: string.slice($direction, 1, 1);
 
                 .#{$prefix}#{$suffix}-#{$size} {
-                    #{$property}-#{$direction}: $size-value;
+                    #{$property}-#{$direction}: $size-value !important;
                 }
             }
         }
@@ -29,17 +29,17 @@
             .#{$prefix}#{$axis}-#{$size} {
                 @if ($axis == x) {
                     @if ($property == gap) {
-                        column-gap: $size-value;
+                        column-gap: $size-value !important;
                     } @else {
-                        #{$property}-left: $size-value;
-                        #{$property}-right: $size-value;
+                        #{$property}-left: $size-value !important;
+                        #{$property}-right: $size-value !important;
                     }
                 } @else {
                     @if ($property == gap) {
-                        row-gap: $size-value;
+                        row-gap: $size-value !important;
                     } @else {
-                        #{$property}-top: $size-value;
-                        #{$property}-bottom: $size-value;
+                        #{$property}-top: $size-value !important;
+                        #{$property}-bottom: $size-value !important;
                     }
                 }
             }
@@ -51,15 +51,15 @@
     @each $id, $aspect-ratio in defaults.$ASPECT-RATIOS {
         &-#{$id} {
             @supports (aspect-ratio: #{$aspect-ratio}) {
-                aspect-ratio: $aspect-ratio;
+                aspect-ratio: $aspect-ratio !important;
             }
             @supports not (aspect-ratio: #{$aspect-ratio}) {
-                position: relative;
-                padding-top: math.div(100, $aspect-ratio) * 1%;
+                position: relative !important;
+                padding-top: math.div(100, $aspect-ratio) * 1% !important;
 
                 & > * {
-                    position: absolute;
-                    inset: 0;
+                    position: absolute !important;
+                    inset: 0 !important;
                 }
             }
         }
@@ -70,27 +70,27 @@
     @include style.border();
 
     &-none {
-        border: none;
+        border: none !important;
     }
 
     &-round {
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius) !important;
 
         @each $direction in left, right, top, bottom {
             &-#{$direction} {
                 @if ($direction == left or $direction == right) {
-                    border-top-#{$direction}-radius: var(--border-radius);
-                    border-bottom-#{$direction}-radius: var(--border-radius);
+                    border-top-#{$direction}-radius: var(--border-radius) !important;
+                    border-bottom-#{$direction}-radius: var(--border-radius) !important;
                 } @else {
-                    border-#{$direction}-left-radius: var(--border-radius);
-                    border-#{$direction}-right-radius: var(--border-radius);
+                    border-#{$direction}-left-radius: var(--border-radius) !important;
+                    border-#{$direction}-right-radius: var(--border-radius) !important;
                 }
             }
         }
     }
 
     &-square {
-        border-radius: 0;
+        border-radius: 0 !important;
     }
 
     @each $coordinate in left, right, top, bottom {
@@ -101,27 +101,27 @@
 }
 
 .fit {
-    height: 100%;
-    width: 100%;
+    height: 100% !important;
+    width: 100% !important;
 
     &-height {
-        height: 100%;
+        height: 100% !important;
     }
 
     &-width {
-        width: 100%;
+        width: 100% !important;
     }
 
     &-viewport {
-        width: 100vw;
-        height: max(100%, 100vh);
+        width: 100vw !important;
+        height: max(100%, 100vh) !important;
 
         &-height {
-            height: max(100%, 100vh);
+            height: max(100%, 100vh) !important;
         }
 
         &-width {
-            width: 100vw;
+            width: 100vw !important;
         }
     }
 }
@@ -130,8 +130,8 @@
     @each $fit in contain, cover, scale-down {
         @each $position in left, right, top, bottom, center {
             &-#{$fit}-#{$position} {
-                object-fit: $fit;
-                object-position: $position;
+                object-fit: $fit !important;
+                object-position: $position !important;
             }
         }
     }
@@ -139,16 +139,16 @@
 
 .siz {
     @each $size in defaults.$SIZES {
-        $size-value: var(--size-#{$size});
+        $size-value: var(--size-#{$size}) !important;
 
         @each $axis in x, y {
             &-#{$axis}-#{$size} {
                 @if ($axis == x) {
-                    width: $size-value;
-                    max-width: 100%;
+                    width: $size-value !important;
+                    max-width: 100% !important;
                 } @else {
-                    height: $size-value;
-                    max-height: 100%;
+                    height: $size-value !important;
+                    max-height: 100% !important;
                 }
             }
         }
@@ -156,8 +156,8 @@
 
     @each $char-count in 45, 60, 75, 90 {
         &-#{$char-count}ch {
-            width: $char-count * 1ch;
-            max-width: 100%;
+            width: $char-count * 1ch !important;
+            max-width: 100% !important;
         }
     }
 }
