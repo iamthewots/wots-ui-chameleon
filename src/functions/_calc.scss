@@ -29,3 +29,7 @@
         @return initial;
     }
 }
+
+@function get-scale-factor($perspective, $distance) {
+    @return math.div(($perspective - $distance), $perspective);
+}

@@ -15,3 +15,9 @@
     background-color: var(--clr-primary);
     color: var(--clr-primary-text);
 }
+
+:where(.box--flat) {
+    @extend :where(.box);
+    border-radius: 0;
+    padding: 0;
+}

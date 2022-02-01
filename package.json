@@ -1,6 +1,6 @@
 {
     "name": "wots-ui-chameleon",
-    "version": "0.0.24",
+    "version": "0.0.25",
     "description": "Sass framework for Wots UI",
     "main": "./src/main.scss",
     "files": [
