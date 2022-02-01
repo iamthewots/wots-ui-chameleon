@@ -139,7 +139,7 @@
 
 .siz {
     @each $size in defaults.$SIZES {
-        $size-value: var(--size-#{$size}) !important;
+        $size-value: var(--size-#{$size});
 
         @each $axis in x, y {
             &-#{$axis}-#{$size} {

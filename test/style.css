@@ -1277,43 +1277,43 @@ body {
 }
 
 .siz-x-xs {
-  width: var(--size-xs) !important !important;
+  width: var(--size-xs) !important;
   max-width: 100% !important;
 }
 .siz-y-xs {
-  height: var(--size-xs) !important !important;
+  height: var(--size-xs) !important;
   max-height: 100% !important;
 }
 .siz-x-sm {
-  width: var(--size-sm) !important !important;
+  width: var(--size-sm) !important;
   max-width: 100% !important;
 }
 .siz-y-sm {
-  height: var(--size-sm) !important !important;
+  height: var(--size-sm) !important;
   max-height: 100% !important;
 }
 .siz-x-md {
-  width: var(--size-md) !important !important;
+  width: var(--size-md) !important;
   max-width: 100% !important;
 }
 .siz-y-md {
-  height: var(--size-md) !important !important;
+  height: var(--size-md) !important;
   max-height: 100% !important;
 }
 .siz-x-lg {
-  width: var(--size-lg) !important !important;
+  width: var(--size-lg) !important;
   max-width: 100% !important;
 }
 .siz-y-lg {
-  height: var(--size-lg) !important !important;
+  height: var(--size-lg) !important;
   max-height: 100% !important;
 }
 .siz-x-xl {
-  width: var(--size-xl) !important !important;
+  width: var(--size-xl) !important;
   max-width: 100% !important;
 }
 .siz-y-xl {
-  height: var(--size-xl) !important !important;
+  height: var(--size-xl) !important;
   max-height: 100% !important;
 }
 .siz-45ch {
