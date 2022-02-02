@@ -7,7 +7,7 @@
         }
 
         @each $axis in x, y {
-            &-#{$axis} {
+            &-#{$axis}-#{$overflow} {
                 overflow-#{$axis}: $overflow;
             }
         }
