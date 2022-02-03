@@ -1339,10 +1339,10 @@ body {
 .ovf-auto {
   overflow: auto;
 }
-.ovf-x {
+.ovf-x-auto {
   overflow-x: auto;
 }
-.ovf-y {
+.ovf-y-auto {
   overflow-y: auto;
 }
 .ovf-wrapper-x-auto {
@@ -1355,10 +1355,10 @@ body {
 .ovf-hidden {
   overflow: hidden;
 }
-.ovf-x {
+.ovf-x-hidden {
   overflow-x: hidden;
 }
-.ovf-y {
+.ovf-y-hidden {
   overflow-y: hidden;
 }
 .ovf-wrapper-x-hidden {
@@ -1371,10 +1371,10 @@ body {
 .ovf-scroll {
   overflow: scroll;
 }
-.ovf-x {
+.ovf-x-scroll {
   overflow-x: scroll;
 }
-.ovf-y {
+.ovf-y-scroll {
   overflow-y: scroll;
 }
 .ovf-wrapper-x-scroll {
@@ -1919,6 +1919,9 @@ body {
 
 .flx {
   display: flex;
+}
+.flx-column {
+  flex-direction: column;
 }
 .flx-wrap {
   flex-wrap: wrap;

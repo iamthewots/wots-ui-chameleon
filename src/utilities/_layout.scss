@@ -99,6 +99,10 @@
 .flx {
     display: flex;
 
+    &-column {
+        flex-direction: column;
+    }
+
     &-wrap {
         flex-wrap: wrap;
 
