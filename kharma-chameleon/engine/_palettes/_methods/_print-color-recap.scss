@@ -1,0 +1,9 @@
+@use "sass:map";
+
+@mixin print-color-recap($color-map, $id) {
+    $is-dark: map.get($color-map, "is-dark");
+    $has-average-luminance: map.get($color-map, "has-average-luminance");
+    $lightness-delta: map.get($color-map, "lightness-delta");
+    $highlight-delta: map.get($color-map, "highlight-delta");
+    /* clr: #{$id} | drk: #{$is-dark} | avr-lum: #{$has-average-luminance} | $lig-delta: #{$lightness-delta} | $hgl-delta: #{$highlight-delta} */
+}

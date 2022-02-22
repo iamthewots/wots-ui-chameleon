@@ -1,0 +1,11 @@
+@use "../../config";
+@use "sass:color";
+@use "sass:map";
+
+@function get-shadow-color($color-map, $id) {
+    $value: map.get($color-map, "value");
+    $shadow-settings: map.get(config.$box-shadow-settings, $id);
+    $alpha: map.get($shadow-settings, "alpha");
+
+    @return color.change($value, $alpha: $alpha);
+}

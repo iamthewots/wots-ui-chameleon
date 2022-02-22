@@ -1,0 +1,52 @@
+@use "../../../functions/palettes";
+@use "sass:map";
+@use "sass:meta";
+
+@function validate-color($color, $global-settings) {
+    $color-map: ();
+    @if (meta.type-of($color) == color) {
+        $color-map: map.set($color-map, "value", $color);
+    } @else if (meta.type-of($color) == map) {
+        $value: map.get($color, "value");
+        @if (meta.type-of($value) != color) {
+            @error "Invalid color: #{$value}";
+        }
+        @each $key, $value in $color {
+            $color-map: map.set($color-map, $key, $value);
+        }
+    } @else {
+        @error "Invalid color/map: #{$color}";
+    }
+
+    $value: map.get($color-map, "value");
+
+    $is-dark: map.get($color-map, "is-dark");
+    @if (meta.type-of($is-dark) != bool) {
+        $is-dark: palettes.is-dark($value);
+        $color-map: map.set($color-map, "is-dark", $is-dark);
+    }
+
+    $has-average-luminance: map.get($color-map, "has-average-luminance");
+    @if (meta.type-of($has-average-luminance) != bool) {
+        $has-average-luminance: palettes.has-average-luminance($value);
+        $color-map: map.set(
+            $color-map,
+            "has-average-luminance",
+            $has-average-luminance
+        );
+    }
+
+    $lightness-delta: map.get($color-map, "lightness-delta");
+    @if (meta.type-of($lightness-delta) != number) {
+        $lightness-delta: map.get($global-settings, "lightness-delta");
+        $color-map: map.set($color-map, "lightness-delta", $lightness-delta);
+    }
+
+    $highlight-delta: map.get($color-map, "highlight-delta");
+    @if (meta.type-of($highlight-delta) != number) {
+        $highlight-delta: map.get($global-settings, "highlight-delta");
+        $color-map: map.set($color-map, "highlight-delta", $highlight-delta);
+    }
+
+    @return $color-map;
+}

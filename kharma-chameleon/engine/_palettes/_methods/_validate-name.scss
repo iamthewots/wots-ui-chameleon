@@ -1,0 +1,8 @@
+@use "../../../database/palettes-db";
+
+@function validate-name($name) {
+    @if (palettes-db.palette-exists($name)) {
+        @error "Palette #{$name} already exists";
+    }
+    @return $name;
+}

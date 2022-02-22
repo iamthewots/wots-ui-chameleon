@@ -1,0 +1,52 @@
+:root {
+  /* clr: primary | drk: false | avr-lum: false | $lig-delta: 10% | $hgl-delta: 5% */
+  --clr-main-primary: #ffffff;
+  --clr-main-primary-text: var(--clr-text-dark);
+  --clr-main-primary-lighter: white;
+  --clr-main-primary-darker: #e6e6e6;
+  --clr-main-primary-overlay: rgba(255, 255, 255, 0.75);
+  --clr-main-primary-shadow-primary: rgba(255, 255, 255, 0.2);
+  --clr-main-primary-shadow-secondary: rgba(255, 255, 255, 0.4);
+  --clr-main-primary-highlight-1: #f2f2f2;
+  --clr-main-primary-highlight-2: #e6e6e6;
+  --clr-main-primary-highlight-3: #d9d9d9;
+  /* clr: secondary | drk: false | avr-lum: false | $lig-delta: 10% | $hgl-delta: 5% */
+  --clr-main-secondary: #f8f8f8;
+  --clr-main-secondary-text: var(--clr-text-dark);
+  --clr-main-secondary-lighter: #f9f9f9;
+  --clr-main-secondary-darker: #dfdfdf;
+  --clr-main-secondary-overlay: rgba(248, 248, 248, 0.75);
+  --clr-main-secondary-shadow-primary: rgba(248, 248, 248, 0.2);
+  --clr-main-secondary-shadow-secondary: rgba(248, 248, 248, 0.4);
+  --clr-main-secondary-highlight-1: #ebebeb;
+  --clr-main-secondary-highlight-2: #dfdfdf;
+  --clr-main-secondary-highlight-3: #d2d2d2;
+  /* clr: tertiary | drk: false | avr-lum: false | $lig-delta: 10% | $hgl-delta: 5% */
+  --clr-main-tertiary: #e3e3e3;
+  --clr-main-tertiary-text: var(--clr-text-dark);
+  --clr-main-tertiary-lighter: #e6e6e6;
+  --clr-main-tertiary-darker: #cccccc;
+  --clr-main-tertiary-overlay: rgba(227, 227, 227, 0.75);
+  --clr-main-tertiary-shadow-primary: rgba(227, 227, 227, 0.2);
+  --clr-main-tertiary-shadow-secondary: rgba(227, 227, 227, 0.4);
+  --clr-main-tertiary-highlight-1: #d6d6d6;
+  --clr-main-tertiary-highlight-2: #cacaca;
+  --clr-main-tertiary-highlight-3: #bdbdbd;
+  /* clr: accent | drk: true | avr-lum: false | $lig-delta: 10% | $hgl-delta: 5% */
+  --clr-main-accent: #6441a4;
+  --clr-main-accent-text: var(--clr-text-light);
+  --clr-main-accent-lighter: #714ab7;
+  --clr-main-accent-darker: #5a3b94;
+  --clr-main-accent-overlay: rgba(100, 65, 164, 0.75);
+  --clr-main-accent-shadow-primary: rgba(100, 65, 164, 0.2);
+  --clr-main-accent-shadow-secondary: rgba(100, 65, 164, 0.4);
+  --clr-main-accent-highlight-1: #6f48b6;
+  --clr-main-accent-highlight-2: #7d5abe;
+  --clr-main-accent-highlight-3: #8c6dc5;
+}
+
+.cavallo {
+  width: 1000px;
+}
+
+/*# sourceMappingURL=output.css.map */

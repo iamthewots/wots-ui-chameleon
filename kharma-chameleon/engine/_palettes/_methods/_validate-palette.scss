@@ -1,0 +1,22 @@
+@use "../../../functions/system";
+@use "../../config";
+@use "sass:map";
+@use "sass:meta";
+
+@function validate-palette($palette-map) {
+    @if (map.has-key($palette-map, "colors") == false) {
+        @error "Invalid palette-map (colors-not-provided)";
+    }
+    $settings: map.get($palette-map, "settings");
+    @if (meta.type-of($settings) != map) {
+        $palette-map: map.set(
+            $palette-map,
+            "settings",
+            config.$palette-settings
+        );
+    } @else {
+        $palette-map: system.merge-maps($palette-map, config.$palette-settings);
+    }
+
+    @return $palette-map;
+}

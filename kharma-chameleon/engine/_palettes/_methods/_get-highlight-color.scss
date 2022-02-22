@@ -1,0 +1,30 @@
+@use "../../config";
+@use "sass:color";
+@use "sass:map";
+
+@function get-highlight-color($color-map, $i) {
+    $value: map.get($color-map, "value");
+    $is-dark: map.get($color-map, "is-dark");
+    $has-average-luminance: map.get($color-map, "has-average-luminance");
+    $delta: map.get($color-map, "highlight-delta");
+    @if ($delta * config.$highlight-layers > 100%) {
+        $delta: math.div(100%, config.$highlight-layers);
+    }
+    $x: -1;
+
+    @if ($is-dark) {
+        $x: 1;
+        @if ($has-average-luminance) {
+            $x: -1;
+        }
+    } @else {
+        $x: -1;
+        @if ($has-average-luminance) {
+            $x: 1;
+        }
+    }
+
+    $y: $x * $i;
+
+    @return color.adjust($value, $lightness: $delta * $y);
+}

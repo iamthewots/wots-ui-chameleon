@@ -1,0 +1,10 @@
+@use "sass:map";
+
+@function get-text-color($color-map, $x: 1) {
+    $is-dark: map.get($color-map, "is-dark");
+    @if ($is-dark) {
+        @return var(--clr-text-light);
+    } @else {
+        @return var(--clr-text-dark);
+    }
+}

@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "sass:meta";
+
+$db: ();
+
+@function palette-exists($name) {
+    @if (map.has-key($db, $name)) {
+        @return true;
+    }
+    @return false;
+}
+
+@mixin add-palette($name, $palette-map, $override: false) {
+    @if (palette-exists($name) and $override == false) {
+        @error "Palette #{$name} already exists";
+    }
+
+    $db: map.set($db, $name, $palette-map);
+}

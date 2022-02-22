@@ -1,0 +1,27 @@
+@use "sass:color";
+
+@function get-luminance($color) {
+    $red: color.red($color) * 0.299;
+    $green: color.green($color) * 0.587;
+    $blue: color.blue($color) * 0.114;
+
+    @return $red + $green + $blue;
+}
+
+@function has-average-luminance($color) {
+    $luminance: get-luminance($color);
+
+    @if ($luminance > 100 and $luminance < 155) {
+        @return true;
+    }
+    @return false;
+}
+
+@function is-dark($color) {
+    $luminance: get-luminance($color);
+
+    @if ($luminance < 127.5) {
+        @return true;
+    }
+    @return false;
+}

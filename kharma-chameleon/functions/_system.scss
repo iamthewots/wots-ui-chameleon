@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "sass:meta";
+
+@function merge-maps($target, $template) {
+    @each $key, $def-value in $template {
+        $value: map.get($target, $key);
+        @if (
+            meta.type-of($value) ==
+                null or
+                meta.type-of($value) !=
+                meta.type-of($def-value)
+        ) {
+            $target: map.set($target, $key, $def-value);
+        }
+    }
+
+    @return $target;
+}

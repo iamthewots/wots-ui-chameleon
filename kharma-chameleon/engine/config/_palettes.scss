@@ -1,0 +1,10 @@
+$color-id-list: "primary", "secondary", "tertiary", "accent";
+$highlight-layers: 3;
+$palette-settings: (
+    "build-classes": true,
+    "lightness-delta": 10%,
+    "highlight-delta": 5%,
+    "overlay-color": "primary",
+    "border-color": "primary-darker",
+    "shadow-color": "primary",
+);

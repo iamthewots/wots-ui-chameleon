@@ -1,0 +1,191 @@
+@use "./_methods" as *;
+@use "../../database/palettes-db";
+@use "../config";
+@use "sass:color";
+@use "sass:math";
+@use "sass:map";
+
+@mixin create-palette($name, $palette-map) {
+    $name: validate-name($name);
+    $palette-map: validate-palette($palette-map);
+    $colors: map.get($palette-map, "colors");
+    $settings: map.get($palette-map, "settings");
+
+    :root {
+        @each $id in config.$color-id-list {
+            $color-map: validate-color(map.get($colors, $id), $settings);
+            @include print-color-recap($color-map, $id);
+            $var-prefix: "--clr-#{$name}-#{$id}";
+
+            #{$var-prefix}: map.get($color-map, "value");
+            #{$var-prefix}-text: get-text-color($color-map);
+            #{$var-prefix}-lighter: get-lightness-color($color-map, 1);
+            #{$var-prefix}-darker: get-lightness-color($color-map, -1);
+            #{$var-prefix}-overlay: get-overlay-color($color-map);
+            @each $id, $settings in config.$box-shadow-settings {
+                #{$var-prefix}-shadow-#{$id}: get-shadow-color($color-map, $id);
+            }
+            @for $i from 1 through config.$highlight-layers {
+                #{$var-prefix}-highlight-#{$i}: get-highlight-color(
+                    $color-map,
+                    $i
+                );
+            }
+        }
+    }
+
+    @if (map.get($settings, "build-classes")) {
+        .cavallo {
+            width: 1000px;
+        }
+    }
+
+    @include palettes-db.add-palette($name, $palette-map);
+}
+
+@mixin create-palette-classes($palette) {}
+
+// methods
+
+// @function validate-name($name) {
+//     @if (palettes-db.palette-exists($name)) {
+//         @error "Palette #{$name} already exists";
+//     }
+//     @return $name;
+// }
+
+// @function validate-palette($palette-map) {
+//     @if (map.has-key($palette-map, "colors") == false) {
+//         @error "Invalid palette-map (colors-not-provided)";
+//     }
+//     $settings: map.get($palette-map, "settings");
+//     @if (meta.type-of($settings) != map) {
+//         $palette-map: map.set(
+//             $palette-map,
+//             "settings",
+//             config.$palette-settings
+//         );
+//     } @else {
+//         $palette-map: system.merge-maps($palette-map, config.$palette-settings);
+//     }
+
+//     @return $palette-map;
+// }
+
+// @function validate-color($color, $global-settings) {
+//     $color-map: ();
+//     @if (meta.type-of($color) == color) {
+//         $color-map: map.set($color-map, "value", $color);
+//     } @else if (meta.type-of($color) == map) {
+//         $value: map.get($color, "value");
+//         @if (meta.type-of($value) != color) {
+//             @error "Invalid color: #{$value}";
+//         }
+//         @each $key, $value in $color {
+//             $color-map: map.set($color-map, $key, $value);
+//         }
+//     } @else {
+//         @error "Invalid color/map: #{$color}";
+//     }
+
+//     $value: map.get($color-map, "value");
+
+//     $is-dark: map.get($color-map, "is-dark");
+//     @if (meta.type-of($is-dark) != bool) {
+//         $is-dark: palettes.is-dark($value);
+//         $color-map: map.set($color-map, "is-dark", $is-dark);
+//     }
+
+//     $has-average-luminance: map.get($color-map, "has-average-luminance");
+//     @if (meta.type-of($has-average-luminance) != bool) {
+//         $has-average-luminance: palettes.has-average-luminance($value);
+//         $color-map: map.set(
+//             $color-map,
+//             "has-average-luminance",
+//             $has-average-luminance
+//         );
+//     }
+
+//     $lightness-delta: map.get($color-map, "lightness-delta");
+//     @if (meta.type-of($lightness-delta) != number) {
+//         $lightness-delta: map.get($global-settings, "lightness-delta");
+//         $color-map: map.set($color-map, "lightness-delta", $lightness-delta);
+//     }
+
+//     $highlight-delta: map.get($color-map, "highlight-delta");
+//     @if (meta.type-of($highlight-delta) != number) {
+//         $highlight-delta: map.get($global-settings, "highlight-delta");
+//         $color-map: map.set($color-map, "highlight-delta", $highlight-delta);
+//     }
+
+//     @return $color-map;
+// }
+
+// @mixin print-color-recap($color-map, $id) {
+//     $is-dark: map.get($color-map, "is-dark");
+//     $has-average-luminance: map.get($color-map, "has-average-luminance");
+//     $lightness-delta: map.get($color-map, "lightness-delta");
+//     $highlight-delta: map.get($color-map, "highlight-delta");
+//     /* clr: #{$id} | drk: #{$is-dark} | avr-lum: #{$has-average-luminance} | $lig-delta: #{$lightness-delta} | $hgl-delta: #{$highlight-delta} */
+// }
+
+// @function get-text-color($color-map, $x: 1) {
+//     $is-dark: map.get($color-map, "is-dark");
+//     @if ($is-dark) {
+//         @return var(--clr-text-light);
+//     } @else {
+//         @return var(--clr-text-dark);
+//     }
+// }
+
+// @function get-lightness-color($color-map, $x: 1) {
+//     $value: map.get($color-map, "value");
+//     $delta: map.get($color-map, "lightness-delta");
+//     @if ($delta > 100%) {
+//         $delta: 99%;
+//     }
+
+//     @return color.scale($value, $lightness: $delta * $x);
+// }
+
+// @function get-overlay-color($color-map) {
+//     $value: map.get($color-map, "value");
+//     $alpha: config.$overlay-alpha;
+
+//     @return color.change($value, $alpha: $alpha);
+// }
+
+// @function get-shadow-color($color-map, $id) {
+//     $value: map.get($color-map, "value");
+//     $shadow-settings: map.get(config.$box-shadow-settings, $id);
+//     $alpha: map.get($shadow-settings, "alpha");
+
+//     @return color.change($value, $alpha: $alpha);
+// }
+
+// @function get-highlight-color($color-map, $i) {
+//     $value: map.get($color-map, "value");
+//     $is-dark: map.get($color-map, "is-dark");
+//     $has-average-luminance: map.get($color-map, "has-average-luminance");
+//     $delta: map.get($color-map, "highlight-delta");
+//     @if ($delta * config.$highlight-layers > 100%) {
+//         $delta: math.div(100%, config.$highlight-layers);
+//     }
+//     $x: -1;
+
+//     @if ($is-dark) {
+//         $x: 1;
+//         @if ($has-average-luminance) {
+//             $x: -1;
+//         }
+//     } @else {
+//         $x: -1;
+//         @if ($has-average-luminance) {
+//             $x: 1;
+//         }
+//     }
+
+//     $y: $x * $i;
+
+//     @return color.adjust($value, $lightness: $delta * $y);
+// }

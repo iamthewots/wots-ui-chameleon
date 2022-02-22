@@ -1,0 +1,10 @@
+@use "../../config";
+@use "sass:color";
+@use "sass:map";
+
+@function get-overlay-color($color-map) {
+    $value: map.get($color-map, "value");
+    $alpha: config.$overlay-alpha;
+
+    @return color.change($value, $alpha: $alpha);
+}

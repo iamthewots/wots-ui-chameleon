@@ -1,0 +1,12 @@
+@use "sass:color";
+@use "sass:map";
+
+@function get-lightness-color($color-map, $x: 1) {
+    $value: map.get($color-map, "value");
+    $delta: map.get($color-map, "lightness-delta");
+    @if ($delta > 100%) {
+        $delta: 99%;
+    }
+
+    @return color.scale($value, $lightness: $delta * $x);
+}
