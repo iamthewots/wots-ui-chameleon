@@ -10,7 +10,7 @@
     $palette-map: validate-palette($palette-map);
     $colors: map.get($palette-map, "colors");
     $settings: map.get($palette-map, "settings");
-
+    
     :root {
         @each $id in config.$color-id-list {
             $color-map: validate-color(map.get($colors, $id), $settings);

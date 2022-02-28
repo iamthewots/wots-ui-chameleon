@@ -1,0 +1,256 @@
+@use "../settings/theme";
+@use "./calc";
+@use "./system";
+@use "sass:color";
+@use "sass:map";
+@use "sass:meta";
+
+@mixin create-palette($palette-name, $palette-map) {
+    $palette-name: _parse-palette-name($palette-name);
+    $palette-map: _parse-palette-map($palette-map);
+    $palette-colors: map.get($palette-map, "colors");
+    $palette-settings: map.get($palette-map, "settings");
+    $palette-parsed: ();
+
+    :root {
+        @each $id in theme.$color-ids {
+            $color: map.get($palette-colors, $id);
+            $color-map: _parse-color-map($color, $palette-settings);
+            $prefix: "--clr-#{$palette-name}-#{$id}";
+
+            #{$prefix}: map.get($color-map, "value");
+            @include _set-text-shade($prefix, $color-map);
+            @include _set-alpha-shades($prefix, $color-map);
+            @include _set-lightness-shades($prefix, $color-map);
+            @include _set-highlight-shades($prefix, $color-map);
+        }
+    }
+}
+
+@function get-color-luminance($color) {
+    $red: color.red($color);
+    $green: color.green($color);
+    $blue: color.blue($color);
+
+    $luminance: $red * 0.299 + $green * 0.587 + $blue * 0.114;
+
+    @return $luminance;
+}
+
+@function color-is-dark($color) {
+    $luminance: get-color-luminance($color);
+
+    @if ($luminance < 127.5) {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+@function color-is-average($color) {
+    $luminance: get-color-luminance($color);
+
+    @if ($luminance <= 100 and $luminance >= 155) {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// private scope
+$_db: ();
+
+@function _parse-palette-name($palette-name) {
+    @if (meta.type-of($palette-name) != string) {
+        @error "Invalid palette name (not-a-string): #{$pal-name}";
+    } @else if (map.get($_db, $palette-name) != null) {
+        @error "Invalid palette name (already-used): #{$pal-name}";
+    }
+
+    @return $palette-name;
+}
+
+@function _parse-palette-map($palette-map) {
+    @if (meta.type-of($palette-map) != map) {
+        @error "Invalid palette map (not-a-map): #{$pal-map}";
+    } @else if (not map.has-key($palette-map, "colors")) {
+        @error "Invalid palette map (no-colors-provided): #{$pal-map}";
+    }
+
+    $palette-settings: map.get($palette-map, "settings");
+
+    @if (meta.type-of($palette-settings) != map) {
+        $palette-map: map.set(
+            $palette-map,
+            "settings",
+            theme.$palette-settings
+        );
+    } @else {
+        $palette-map: system.parse-default-settings(
+            $palette-map,
+            theme.$palette-settings
+        );
+    }
+
+    @return $palette-map;
+}
+
+@function _parse-color-map($color, $palette-settings) {
+    $color-map: ();
+    @if (meta.type-of($color) == color) {
+        $color-map: map.set($color-map, "value", $color);
+    } @else if (meta.type-of($color) == map) {
+        $color-value: map.get($color-map, "value");
+        @if (meta.type-of($color-value) != color) {
+            @error "Invalid color provided (not-a-color): #{$color-value}";
+        }
+        $color-map: $color;
+    }
+
+    $color-map: _parse-is-dark-prop($color-map);
+    $color-map: _parse-is-average-prop($color-map);
+    $color-map: _parse-lightness-delta-prop($color-map, $palette-settings);
+    $color-map: _parse-highlight-delta-prop($color-map, $palette-settings);
+
+    @return $color-map;
+}
+
+@function _parse-is-dark-prop($color-map) {
+    $is-dark: map.get($color-map, "is-dark");
+
+    @if (meta.type-of($is-dark) != bool) {
+        $color-value: map.get($color-map, "value");
+        $is-dark: color-is-dark($color-value);
+    }
+
+    $color-map: map.set($color-map, "is-dark", $is-dark);
+    @return $color-map;
+}
+
+@function _parse-is-average-prop($color-map) {
+    $is-average: map.get($color-map, "is-average");
+
+    @if (meta.type-of($is-average) != bool) {
+        $color-value: map.get($color-map, "value");
+        $is-average: color-is-average($color-value);
+    }
+
+    $color-map: map.set($color-map, "is-average", $is-average);
+    @return $color-map;
+}
+
+@function _parse-lightness-delta-prop($color-map, $palette-settings) {
+    $delta: map.get($color-map, "lightness-delta");
+
+    @if (meta.type-of($delta) != number) {
+        $delta: map.get($palette-settings, "lightness-delta");
+    }
+
+    $color-map: map.set($color-map, "lightness-delta", $delta);
+    @return $color-map;
+}
+
+@function _parse-highlight-delta-prop($color-map, $palette-settings) {
+    $delta: map.get($color-map, "highlight-delta");
+
+    @if (meta.type-of($delta) != number) {
+        $delta: map.get($palette-settings, "highlight-delta");
+    }
+
+    $color-map: map.set($color-map, "highlight-delta", $delta);
+    @return $color-map;
+}
+
+@mixin _set-text-shade($prefix, $color-map) {
+    $is-dark: map.get($color-map, "is-dark");
+
+    $shade: var(--clr-text-dark, #000);
+    @if ($is-dark) {
+        $shade: var(--clr-text-light, #fff);
+    }
+
+    #{$prefix}-text: $shade;
+}
+
+@mixin _set-alpha-shades($prefix, $color-map) {
+    $color-value: map.get($color-map, "value");
+
+    @each $key, $value in theme.$alpha-shades {
+        $shade: color.change($color-value, $alpha: $value);
+
+        #{$prefix}-alpha-#{$key}: $shade;
+    }
+}
+
+@mixin _set-lightness-shades($prefix, $color-map) {
+    $color-value: map.get($color-map, "value");
+    $delta: _parse-delta(map.get($color-map, "lightness-delta"));
+
+    @each $key, $value in theme.$lightness-shades {
+        $shade: color.scale($color-value, $lightness: $delta * $value);
+
+        #{$prefix}-#{$key}: $shade;
+    }
+}
+
+@mixin _set-highlight-shades($prefix, $color-map) {
+    $color-value: map.get($color-map, "value");
+    $delta: _parse-delta(map.get($color-map, "highlight-delta"));
+    $x: _get-highlight-multiplier($color-map);
+    @if ($delta * theme.$highlight-layers >= 100%) {
+        $delta: 100% / theme.$highlight-layers;
+    }
+
+    @for $i from 1 through theme.$highlight-layers {
+        $shade: color.scale($color-value, $lightness: $delta * $x * $i);
+
+        #{$prefix}-highlight-#{$i}: $shade;
+    }
+}
+
+@function _parse-delta($value) {
+    $delta: calc.strip-unit($value) * 1%;
+
+    @return calc.clamp-value($delta, 1%, 99%);
+}
+
+@function _get-highlight-multiplier($color-map) {
+    $is-dark: map.get($color-map, "is-dark");
+    $is-average: map.get($color-map, "is-average");
+
+    @if ($is-dark) {
+        @if ($is-average) {
+            @return -1;
+        } @else {
+            @return 1;
+        }
+    } @else {
+        @if ($is-average) {
+            @return 1;
+        } @else {
+            @return -1;
+        }
+    }
+}
+
+@mixin _set-shadow-shades($prefix, $color-map) {
+    $color-value: map.get($color-map, "value");
+
+    @each $key, $map in theme.$alpha-shades {
+        $value: map.get($map, "alpha");
+        $shade: color.change($color-value, $alpha: $value);
+
+        #{$prefix}-shadow-#{$key}: $shade;
+    }
+}
+
+$pal: (
+    "colors": (
+        "primary": #6441a4,
+        "secondary": #4444ff,
+        "tertiary": #f88,
+        "accent": #f24,
+    ),
+);
+
+@include create-palette("test", $pal);

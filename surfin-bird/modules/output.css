@@ -1,0 +1,48 @@
+:root {
+  --clr-test-primary: #6441a4;
+  --clr-test-primary-text: var(--clr-text-light, #fff);
+  --clr-test-primary-alpha-20: rgba(100, 65, 164, 0.2);
+  --clr-test-primary-alpha-40: rgba(100, 65, 164, 0.4);
+  --clr-test-primary-alpha-60: rgba(100, 65, 164, 0.6);
+  --clr-test-primary-alpha-80: rgba(100, 65, 164, 0.8);
+  --clr-test-primary-lighter: #714ab7;
+  --clr-test-primary-darker: #5a3b94;
+  --clr-test-primary-highlight-1: #6a45ae;
+  --clr-test-primary-highlight-2: #714ab7;
+  --clr-test-primary-highlight-3: #7854bb;
+  --clr-test-secondary: #4444ff;
+  --clr-test-secondary-text: var(--clr-text-light, #fff);
+  --clr-test-secondary-alpha-20: rgba(68, 68, 255, 0.2);
+  --clr-test-secondary-alpha-40: rgba(68, 68, 255, 0.4);
+  --clr-test-secondary-alpha-60: rgba(68, 68, 255, 0.6);
+  --clr-test-secondary-alpha-80: rgba(68, 68, 255, 0.8);
+  --clr-test-secondary-lighter: #5757ff;
+  --clr-test-secondary-darker: #2424ff;
+  --clr-test-secondary-highlight-1: #4d4dff;
+  --clr-test-secondary-highlight-2: #5757ff;
+  --clr-test-secondary-highlight-3: #6060ff;
+  --clr-test-tertiary: #f88;
+  --clr-test-tertiary-text: var(--clr-text-dark, #000);
+  --clr-test-tertiary-alpha-20: rgba(255, 136, 136, 0.2);
+  --clr-test-tertiary-alpha-40: rgba(255, 136, 136, 0.4);
+  --clr-test-tertiary-alpha-60: rgba(255, 136, 136, 0.6);
+  --clr-test-tertiary-alpha-80: rgba(255, 136, 136, 0.8);
+  --clr-test-tertiary-lighter: #ff9494;
+  --clr-test-tertiary-darker: #ff6161;
+  --clr-test-tertiary-highlight-1: #ff7474;
+  --clr-test-tertiary-highlight-2: #ff6161;
+  --clr-test-tertiary-highlight-3: #ff4d4d;
+  --clr-test-accent: #f24;
+  --clr-test-accent-text: var(--clr-text-light, #fff);
+  --clr-test-accent-alpha-20: rgba(255, 34, 68, 0.2);
+  --clr-test-accent-alpha-40: rgba(255, 34, 68, 0.4);
+  --clr-test-accent-alpha-60: rgba(255, 34, 68, 0.6);
+  --clr-test-accent-alpha-80: rgba(255, 34, 68, 0.8);
+  --clr-test-accent-lighter: #ff3857;
+  --clr-test-accent-darker: #ff052c;
+  --clr-test-accent-highlight-1: #ff2d4d;
+  --clr-test-accent-highlight-2: #ff3857;
+  --clr-test-accent-highlight-3: #ff4360;
+}
+
+/*# sourceMappingURL=output.css.map */

@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "sass:meta";
+
+@function parse-default-settings($map, $schema) {
+    @each $key, $default-value in $schema {
+        $val: map.get($map, $key);
+        $value-type: meta.type-of($val);
+        $default-type: meta.type-of($default-value);
+
+        @if ($value-type != $default-type) {
+            $map: map.set($map, $key, $default-value);
+        }
+    }
+    @return $map;
+}

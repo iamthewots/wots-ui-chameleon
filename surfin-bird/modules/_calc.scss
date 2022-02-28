@@ -1,0 +1,18 @@
+@use "sass:math";
+@use "sass:meta";
+
+@function clamp-value($value, $min, $max) {
+    @return math.max(math.min($value, $max), $min);
+}
+
+@function strip-unit($value) {
+    @if (meta.type-of($value) == number and not math.is-unitless($value)) {
+        @return math.div($value, $value * 0 + 1);
+    }
+    @return $value;
+}
+
+@function get-em-from-px($px) {
+    $value: strip-unit($px);
+    @return math.div($value, 16) * 1em;
+}

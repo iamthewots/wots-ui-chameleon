@@ -1,0 +1,68 @@
+@use "sass:list";
+
+$alpha-shades: (
+    "20": 0.2,
+    "40": 0.4,
+    "60": 0.6,
+    "80": 0.8,
+);
+
+$color-ids: "primary", "secondary", "tertiary", "accent";
+
+$highlight-layers: 3;
+
+$lightness-shades: (
+    "lighter": 1,
+    "darker": -1,
+);
+
+$overlay-alpha: 0.75;
+
+$palette-settings: (
+    "build-classes": true,
+    "lightness-delta": 10%,
+    "highlight-delta": 5%,
+    "overlay-color": "primary",
+    "border-color": "primary",
+    "shadow-color": "primary",
+);
+
+$shadow-settings: (
+    "primary": (
+        "alpha": 0.2,
+        "settings": 0,
+    ),
+    "secondary": (
+        "alpha": 0.4,
+        "settings": 0,
+    ),
+);
+
+// generate shades list
+$shades-list: "";
+@each $id in $color-ids {
+    $shades-list: list.append($shades-list, $id);
+
+    @each $key, $value in $alpha-shades {
+        $shade: "#{$id}-alpha-#{$key}";
+        $shades-list: list.append($shades-list, $shade);
+    }
+
+    @each $key, $value in $lightness-shades {
+        $shade: "#{$id}-#{$key}";
+        $shades-list: list.append($shades-list, $shade);
+    }
+
+    @for $i from 1 through $highlight-layers {
+        $shade: "#{$id}-highlight-#{$i}";
+        $shades-list: list.append($shades-list, $shade);
+    }
+
+    @each $key, $value in $shadow-settings {
+        $shade: "#{$id}-shadow-#{$key}";
+        $shades-list: list.append($shades-list, $shade);
+    }
+
+    $shade: "#{$id}-overlay";
+    $shades-list: list.append($shades-list, $shade);
+}
